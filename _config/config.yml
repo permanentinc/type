@@ -1,0 +1,11 @@
+---
+Name: permanentinc-type
+---
+SilverStripe\Admin\LeftAndMain:
+  extra_requirements_css:
+    - permanentinc/type:dist\styles\main.css
+  extra_requirements_javascript:
+    - permanentinc/type:dist\scripts\bundle.js
+SilverStripe\CMS\Model\SiteTree:
+  extensions:
+    - permanentinc\type\Extensions\TypeExtension

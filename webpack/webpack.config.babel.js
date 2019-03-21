@@ -20,7 +20,7 @@ const stats = {
     children    : false,
     source      : false,
     errors      : false,
-    errorDetails: false,
+    errorDetails: false, 
     warnings    : false,
     publicPath  : false,
 };
@@ -36,8 +36,8 @@ module.exports = (env, argv) => {
         devtool     : ifProduction('eval', 'source-map'),
         output      : {
             path             : path.resolve(__dirname, '../dist/scripts'),
-            filename         : 'bundle.js',
-            sourceMapFilename: 'bundle.map.js'
+            filename         : 'type.js',
+            sourceMapFilename: 'type.map.js'
         },
         module      : {
             rules: [

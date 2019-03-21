@@ -1,0 +1,193 @@
+//------------------------------------------------------------------
+// Defaults
+//------------------------------------------------------------------
+
+@import "./../../node_modules/select2/src/scss/core.scss";
+
+//------------------------------------------------------------------
+// Select 2 styles
+//------------------------------------------------------------------
+
+#typeSettings {
+  .select2-container {
+    backface-visibility: hidden;
+    outline: none;
+    z-index: 99999;
+
+    * {
+      outline: none;
+      backface-visibility: hidden;
+    }
+
+    &.select2-container--open {
+      .select2-selection__rendered:before {
+        transform: scaleY(1);
+        transform-origin: bottom left;
+      }
+
+      .select2-selection {
+        border: 1px solid #377cff;
+      }
+    }
+
+    .select2-selection {
+      margin: 0;
+      height: auto;
+      border: 0;
+      background: transparent;
+      border: 1px solid #d5d8dd;
+      border-radius: 0;
+
+      &__rendered {
+        display: block;
+        margin: 0;
+        font-size: 14px;
+        padding: 20px 10px 10px 10px;
+        color: #19191a;
+        transition: all 111ms ease;
+        line-height: 17px !important;
+
+        &:before {
+          position: absolute;
+          content: "";
+          transform: scaleY(0);
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          background-color: rgba(#377cff, 0.05);
+          transform-origin: top left;
+          z-index: -1;
+          transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+        }
+      }
+
+      &__arrow {
+        padding: 0;
+        margin: 0;
+
+        b {
+          border: 0;
+          display: block;
+          margin: -3px 0 0 -4px;
+        }
+      }
+    }
+  }
+
+  .salesForceForm {
+    .select2-container {
+      border-bottom: 1px solid #333;
+      margin-bottom: 20px;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+      font-size: 12px;
+      border: 0;
+      border-radius: 0;
+      padding: 5px 20px 5px 10px;
+      position: relative;
+      background: #fff;
+      border: 1px solid #eee;
+      margin-bottom: 0;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+      position: absolute;
+      color: #377cff;
+      top: 2px;
+      right: 4px;
+    }
+
+    .select2-selection__rendered {
+      height: auto;
+    }
+
+    .select2-search {
+      margin: 0;
+      font-size: 14px;
+      padding: 0;
+    }
+
+    .select2-search__field {
+      margin: 0;
+    }
+  }
+}
+
+//------------------------------------------------------------------
+// Select 2 Dropdown
+//------------------------------------------------------------------
+
+.select2-dropdown {
+  margin: 0;
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+  border:1px solid #377cff;
+  box-shadow: -1px 4px 74px -16px rgba(#377cff, 0.25);
+
+  &.animating {
+    transform: scaleY(1);
+  }
+
+  &.animated {
+    .select2-results__option {
+      opacity: 1;
+    }
+  }
+
+  * {
+    outline: none;
+    backface-visibility: hidden;
+  }
+
+  .select2-results {
+    margin: 0;
+
+    &__options {
+      margin: 0;
+      border: 5px solid #fff;
+      padding: 0;
+      list-style: none;
+
+      &::-webkit-scrollbar-track {
+        background-color: #ebebeb;
+      }
+
+      &::-webkit-scrollbar {
+        width: 3px;
+        background-color: #ebebeb;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #377cff;
+      }
+    }
+
+    &__option {
+      margin: 0;
+      font-size: 14px;
+      padding: 10px 10px;
+      display: block;
+      color: #19191a;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+      opacity: 0;
+
+      &--highlighted {
+        background-color: rgba(#377cff, 0.05) !important;
+        color: #19191a !important;
+      }
+
+      &[aria-selected="true"] {
+        background: #377cff !important;
+        color: #fff !important;
+      }
+    }
+  }
+}

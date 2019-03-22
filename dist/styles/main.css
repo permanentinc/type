@@ -847,6 +847,11 @@
           color: #19191a;
           transition: all 111ms ease;
           line-height: 17px !important; }
+  #typeSettings .type__button {
+    border-radius: 0;
+    background: #377cff;
+    width: calc(100% - 1rem);
+    margin: 0 .5rem; }
 
 
 /*# sourceMappingURL=../type/type.map.js*/

@@ -1,6 +1,5 @@
-<style id="typeStyles">$SiteConfig.TypeSettingsCSS</style>
+<style id="typeStyles">$SiteConfig.typeCSS</style>
 
-<!-- selector = selector_h2 name = Heading 2 -->
 
 <% if $CurrentMember %>
 
@@ -15,14 +14,15 @@
         <div class="type__scroll">
 
 
-<% loop $getTags %>  
+<% loop $getTags %>   
 
-            <div class="type__item">
+            <div class="type__item [ js-type-item ]" data-tag="{$Selector}">
 
                     <h6 class="type__item__heading [ js-slide-toggle ]">{$Name}</h6>
                     
-                    <div id="selector_{$Selector}" class="type__item__content  [ js-slide-content ]" data-selector="h2">
+                    <div id="selector_{$Selector}" class="type__item__content  [ js-slide-content ]" data-selector="{$Selector}" <% if $Selector = 'p' %> style="display:block;" <% end_if %>>
                         <div class="flex">
+                        
                         <%--Font Family--%>
                         <div class="type__item__content__item type__item__content__item--select">
                             <select id="selector_{$Selector}_font-family" class="[ js-font-select ]">
@@ -70,18 +70,16 @@
 
                         <%--Font Size--%>
                         <div class="type__item__content__item type__item__content__item--number">
-                            <input type="number" id="selector_{$Selector}_font-size" placeholder="45" data-default="45" min="0" max="100" step="0.1" value="3.6">
+                            <input class="[ js-font-size ]" type="number" id="selector_{$Selector}_font-size" placeholder="45" data-default="45" min="0" max="100" step="0.1" value="3.6">
                             <label for="selector_{$Selector}_font-size">FONT SIZE</label>
                             <span class="type__item__content__item__unit">rem</span>
                             <span class="type__item__content__item__increase [ js-increase-number ]">+</span>
                             <span class="type__item__content__item__decrease [ js-decrease-number ]">-</span>
                         </div>
 
-                        
-
                         <%--Font Style--%>
                         <div class="type__item__content__item type__item__content__item--select">
-                            <select id="selector_{$Selector}_font-style" class="[ js-type-select ]">
+                            <select id="selector_{$Selector}_font-style" class="[ js-style-select ]">
                                 <option value="normal" selected="selected">Normal</option>
                                 <option value="italic">Italic</option>
                             </select>
@@ -91,20 +89,20 @@
                         <%--Font Colour--%>
                         <div class="type__item__content__item type__item__content__item--colour">
                             <label for="selector_{$Selector}_fontcolour">FONT COLOUR</label>
-                            <input class="type__item__content__item__input" type="text" id="selector_{$Selector}_fontcolour" placeholder="#333">
+                            <input class="type__item__content__item__input [ js-colour ]" value="#333" type="text" id="selector_{$Selector}_fontcolour" placeholder="#333">
                             <span class="type__item__content__item__colour [ js-type-colour ]"><span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]" style="background:#333;"></span></span>
                         </div>
  
                         <%--Font Background Colour--%>
                         <div class="type__item__content__item type__item__content__item--colour">
-                            <input class="type__item__content__item__input" type="text" id="selector_{$Selector}_fontbackgroundcolour" placeholder="transparent">
+                            <input class="type__item__content__item__input [ js-background ]" value="transparent" type="text" id="selector_{$Selector}_fontbackgroundcolour" placeholder="transparent">
                             <label for="selector_{$Selector}_fontbackgroundcolour">BACKGROUND</label>
                             <span class="type__item__content__item__colour [ js-type-colour ]"><span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]"></span></span>
                         </div>
 
                         <%--Font Align--%>
                         <div class="type__item__content__item type__item__content__item--select">
-                            <select id="selector_{$Selector}_text-align" class="[ js-type-select ]">
+                            <select id="selector_{$Selector}_text-align" class="[ js-align-select ]">
                                 <option value="left" selected="selected">Left</option>
                                 <option value="center">Center</option>
                                 <option value="right">Right</option>
@@ -114,7 +112,7 @@
 
                         <%--Line Height--%>
                         <div class="type__item__content__item type__item__content__item--number">
-                            <input type="number" id="selector_{$Selector}_line-height" placeholder="1.2" data-default="1.2" min="0" max="5" step="0.1" value="1.2">
+                            <input type="number" id="selector_{$Selector}_line-height" class="[ js-line-height ]" placeholder="1.2" data-default="1.2" min="0" max="5" step="0.1" value="1.2">
                             <label for="selector_{$Selector}_line-height">LINE HEIGHT</label>
                             <span class="type__item__content__item__increase [ js-increase-number ]">+</span>
                             <span class="type__item__content__item__decrease [ js-decrease-number ]">-</span>
@@ -125,10 +123,10 @@
             </div>
 
             <div class="clearfix"></div>
-
+  
 <% end_loop %>
 
-            <button class="button js-save-type-settings"><span>SAVE SETTINGS</span></button>
+            <button class="type__button js-save-type-settings" data-api="{$BaseHref}type_api/save"><span>SAVE SETTINGS</span></button>
 
         </div>
 

@@ -10,7 +10,8 @@ import Picker from 'vanilla-picker';
 import rgbHex from 'rgb-hex';
 import isHexcolor from 'is-hexcolor';
 import WebFont from 'webfontloader';
-import { uniq } from 'lodash';
+import Css from 'json-to-css';
+import { uniq, forEach, assign } from 'lodash';
 
 /*------------------------------------------------------------------
 Stylesheets
@@ -18,17 +19,52 @@ Stylesheets
 
 import './../scss/style.scss';
 
+
 /*------------------------------------------------------------------
 Variables
 ------------------------------------------------------------------*/
 
 let $body = $('body');
-let $typeSelect = $('.js-type-select');
+let $typeSelect = $('.js-type-select, .js-align-select, .js-style-select');
 let $fontSelect = $('.js-font-select');
+let styles = {};
+
+const createSingleStyleSet = ($el) => {
+    return {
+        [$el.attr('data-tag')]: {
+            'font-family': $el.find('.js-font-select').val(),
+            'font-weight': $el.find('.js-type-select').val(),
+            'font-size': $el.find('.js-font-size').val() + 'rem',
+            'font-style': $el.find('.js-style-select').val(),
+            'color': $el.find('.js-colour').val(),
+            'background': $el.find('.js-background').val(),
+            'text-align': $el.find('.js-align-select').val(),
+            'line-height': $el.find('.js-line-height').val(),
+        }
+    }
+};
+
+
+const createStyles = () => {
+    $('.js-type-item').each(function () {
+        assign(styles, createSingleStyleSet($(this)));
+    });
+
+    $('#typeStyles').html(Css.of(styles));
+};
+
+const saveStyles = () => {
+    $.ajax({
+        url: $('.js-save-type-settings').attr('data-api'),
+        type: 'POST',
+        data: { 'css': Css.of(styles), 'json': styles }
+    }).done(function (response) {
+        console.log(response);
+    });
+};
 
 
 const loadFonts = (fontsToLoad = []) => {
-    console.log('%cloadFonts', 'padding:5px;color: #fff; background: #377cff;');
     $('.js-font-select').each(function () {
         fontsToLoad.push($(this).find('option:selected').val() + ':100,300,400,600,700,800,900');
     });
@@ -104,19 +140,19 @@ $('.js-type-colour').each(function () {
 
 });
 
-
 $('.js-increase-number').on('click', function () {
     let $this = $(this);
     let $input = $this.parent().find('input');
-    $input.val(parseFloat(parseFloat($input.val()) + parseFloat($input.attr('step'))).toFixed(1))
+    $input.val(parseFloat(parseFloat($input.val()) + parseFloat($input.attr('step'))).toFixed(1));
+    createStyles();
 });
-
 
 $('.js-decrease-number').on('click', function () {
     let $this = $(this);
     let $input = $this.parent().find('input');
     if ($input.val() !== '0.0') {
-        $input.val(parseFloat(parseFloat($input.val()) - parseFloat($input.attr('step'))).toFixed(1))
+        $input.val(parseFloat(parseFloat($input.val()) - parseFloat($input.attr('step'))).toFixed(1));
+        createStyles();
     }
 });
 
@@ -127,3 +163,12 @@ $('.js-slide-toggle').on('click', function () {
     $content.slideToggle();
 });
 
+$('.js-type-select').on('change', () => createStyles());
+$('.js-font-select').on('change', () => createStyles());
+$('.js-colour').on('change', () => createStyles());
+$('.js-background').on('change', () => createStyles());
+
+$('.js-save-type-settings').on('click', function () {
+    createStyles();
+    saveStyles();
+});

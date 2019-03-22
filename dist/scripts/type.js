@@ -106,14 +106,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var is_hexcolor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(is_hexcolor__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! webfontloader */ "./node_modules/webfontloader/webfontloader.js");
 /* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(webfontloader__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../scss/style.scss */ "./scss/style.scss");
-/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var json_to_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! json-to-css */ "./node_modules/json-to-css/index.js");
+/* harmony import */ var json_to_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(json_to_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../scss/style.scss */ "./scss/style.scss");
+/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_8__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 console.log('%cType 0.1', 'padding:5px;color: #fff; background: #377cff;');
 /*------------------------------------------------------------------
 Dependencies
 ------------------------------------------------------------------*/
+
 
 
 
@@ -132,18 +137,51 @@ Variables
 ------------------------------------------------------------------*/
 
 var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body');
-var $typeSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-select');
+var $typeSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-select, .js-align-select, .js-style-select');
 var $fontSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-font-select');
+var styles = {};
+
+var createSingleStyleSet = function createSingleStyleSet($el) {
+  return _defineProperty({}, $el.attr('data-tag'), {
+    'font-family': $el.find('.js-font-select').val(),
+    'font-weight': $el.find('.js-type-select').val(),
+    'font-size': $el.find('.js-font-size').val() + 'rem',
+    'font-style': $el.find('.js-style-select').val(),
+    'color': $el.find('.js-colour').val(),
+    'background': $el.find('.js-background').val(),
+    'text-align': $el.find('.js-align-select').val(),
+    'line-height': $el.find('.js-line-height').val()
+  });
+};
+
+var createStyles = function createStyles() {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-item').each(function () {
+    Object(lodash__WEBPACK_IMPORTED_MODULE_7__["assign"])(styles, createSingleStyleSet(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)));
+  });
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#typeStyles').html(json_to_css__WEBPACK_IMPORTED_MODULE_6___default.a.of(styles));
+};
+
+var saveStyles = function saveStyles() {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+    url: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-save-type-settings').attr('data-api'),
+    type: 'POST',
+    data: {
+      'css': json_to_css__WEBPACK_IMPORTED_MODULE_6___default.a.of(styles),
+      'json': styles
+    }
+  }).done(function (response) {
+    console.log(response);
+  });
+};
 
 var loadFonts = function loadFonts() {
   var fontsToLoad = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  console.log('%cloadFonts', 'padding:5px;color: #fff; background: #377cff;');
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-font-select').each(function () {
     fontsToLoad.push(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('option:selected').val() + ':100,300,400,600,700,800,900');
   });
   webfontloader__WEBPACK_IMPORTED_MODULE_5___default.a.load({
     google: {
-      families: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["uniq"])(fontsToLoad)
+      families: Object(lodash__WEBPACK_IMPORTED_MODULE_7__["uniq"])(fontsToLoad)
     }
   });
 };
@@ -226,6 +264,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-increase-number').on('click',
   var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
   var $input = $this.parent().find('input');
   $input.val(parseFloat(parseFloat($input.val()) + parseFloat($input.attr('step'))).toFixed(1));
+  createStyles();
 });
 jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-decrease-number').on('click', function () {
   var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
@@ -233,6 +272,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-decrease-number').on('click',
 
   if ($input.val() !== '0.0') {
     $input.val(parseFloat(parseFloat($input.val()) - parseFloat($input.attr('step'))).toFixed(1));
+    createStyles();
   }
 });
 jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-slide-toggle').on('click', function () {
@@ -240,6 +280,22 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-slide-toggle').on('click', fu
   var $content = $this.next('.js-slide-content');
   $this.toggleClass('active');
   $content.slideToggle();
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-select').on('change', function () {
+  return createStyles();
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-font-select').on('change', function () {
+  return createStyles();
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-colour').on('change', function () {
+  return createStyles();
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-background').on('change', function () {
+  return createStyles();
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-save-type-settings').on('click', function () {
+  createStyles();
+  saveStyles();
 });
 
 /***/ }),
@@ -11305,6 +11361,46 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
+
+/***/ }),
+
+/***/ "./node_modules/json-to-css/index.js":
+/*!*******************************************!*\
+  !*** ./node_modules/json-to-css/index.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./src/css */ "./node_modules/json-to-css/src/css.js")
+
+
+/***/ }),
+
+/***/ "./node_modules/json-to-css/src/css.js":
+/*!*********************************************!*\
+  !*** ./node_modules/json-to-css/src/css.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+class Css {
+  static of (json) {
+    const selectors = Object.keys(json)
+    return selectors.map((selector) => {
+      const definition = json[selector]
+      const rules = Object.keys(definition)
+      const result = rules.map((rule) => {
+        return `${rule}:${definition[rule]}`
+      }).join(';')
+      return `${selector}{${result}}`
+    }).join('\n')
+  }
+}
+
+module.exports = Css
 
 /***/ }),
 

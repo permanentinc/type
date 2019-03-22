@@ -1,6 +1,20 @@
 ---
+Name: type-routes
+After:
+  - "framework/*"
+---
+SilverStripe\Control\Director:
+  rules:
+    type_api: Permanentinc\Type\Controllers\TypeController
+---
 Name: permanentinc-type
 ---
 SilverStripe\CMS\Model\SiteTree:
   extensions:
-    - permanentinc\type\Extensions\TypeExtension
+    - Permanentinc\Type\Extensions\TypeExtension
+---
+Name: permanentinc-type-config-extension
+---
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - Permanentinc\Type\Extensions\TypeConfigExtension

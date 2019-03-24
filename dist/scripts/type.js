@@ -142,7 +142,7 @@ var $fontSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-font-select
 var styles = {};
 
 var createSingleStyleSet = function createSingleStyleSet($el) {
-  return _defineProperty({}, $el.attr('data-tag'), {
+  return _defineProperty({}, '#type ' + $el.attr('data-tag'), {
     'font-family': $el.find('.js-font-select').val(),
     'font-weight': $el.find('.js-type-select').val(),
     'font-size': $el.find('.js-font-size').val() + 'rem',

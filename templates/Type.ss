@@ -126,7 +126,7 @@
   
 <% end_loop %>
 
-            <button class="type__button js-save-type-settings" data-api="{$BaseHref}type_api/save"><span>SAVE SETTINGS</span></button>
+            <button class="type__button js-save-type-settings" data-api="{$BaseHref}type_api/save"><span>SAVE</span></button>
 
         </div>
 

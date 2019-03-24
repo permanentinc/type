@@ -44,8 +44,6 @@ class TypeController extends Controller
         $siteConfig->setField( 'typeCSS', serialize($request->postVar('css')));
         $siteConfig->setField( 'typeJSON', serialize($request->postVar( 'json')));
         $siteConfig->write();
-
-        return $this->getStandardJsonResponse([], 'json', 'SUCCESS', $request->getVars(), 'error');
     }
 
     public function load()

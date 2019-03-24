@@ -49,10 +49,10 @@ $white: #fff;
 
     &__item {
       width: 100%;
+      border-bottom: 1px solid #ebebeb;
 
       &__heading {
-        color: $white;
-        background: #377cff;
+        color: #377cff;
         padding: 5px 10px;
         cursor: pointer;
         position: relative;
@@ -63,8 +63,8 @@ $white: #fff;
           top: 11px;
           content: "";
           display: inline-block;
-          border-right: 2px solid white;
-          border-bottom: 2px solid white;
+          border-right: 2px solid #377cff;
+          border-bottom: 2px solid #377cff;
           width: 5px;
           height: 5px;
           transform: rotate(45deg);
@@ -235,8 +235,9 @@ $white: #fff;
     &__button {
       border-radius: 0;
       background: #377cff;
-      width: calc(100% - 1rem);
-      margin:0 .5rem;
+      float: right;
+      margin: 1rem 0.5rem;
+      padding: 10px 30px;
     }
   }
 }

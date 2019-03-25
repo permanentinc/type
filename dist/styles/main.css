@@ -682,15 +682,20 @@
   #typeSettings .type * {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
     font-weight: normal !important; }
+  #typeSettings .type__scroll {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
   #typeSettings .type__colour {
     position: realtive;
-    width: 100%; }
+    width: 50%; }
     #typeSettings .type__colour label {
       position: absolute;
       font-size: 8px;
       font-weight: bold !important;
-      top: 3px;
-      left: 10px;
+      top: 12px;
+      left: 20px;
       color: #377cff; }
     #typeSettings .type__colour__item {
       width: 100%;

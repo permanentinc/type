@@ -17,13 +17,25 @@
 
                        <div class="type__colour type__colour--primary">
                             <div class="type__colour__item">
-                                <label for="selector_{$Selector}_fontcolour">PRIMARY COLOUR</label>
-                                <input class="type__colour__item__input [ js-colour ]" value="#333" type="text" id="selector_{$Selector}_font-colour" placeholder="#333">
+                                <label for="selector_primary_fontcolour">PRIMARY COLOUR</label>
+                                <input class="type__colour__item__input [ js-colour ]" value="#377dff" type="text" id="selector_primary_font-colour" placeholder="#333">
                                 <span class="type__colour__item__colour [ js-type-colour ]">
                                 <span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]" style="background:#333;"></span>
                                 </span>
                             </div>
                         </div>   
+
+
+                       <div class="type__colour type__colour--secondary">
+                            <div class="type__colour__item">
+                                <label for="selector_secondary_fontcolour">Secondary COLOUR</label>
+                                <input class="type__colour__item__input [ js-colour ]" value="#333" type="text" id="selector_secondary_font-colour" placeholder="#333">
+                                <span class="type__colour__item__colour [ js-type-colour ]">
+                                <span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]" style="background:#333;"></span>
+                                </span>
+                            </div>
+                        </div>   
+
  
 
                      

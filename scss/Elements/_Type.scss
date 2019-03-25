@@ -23,16 +23,20 @@
       font-weight: normal !important;
     }
 
+    &__scroll {
+      display: flex;
+      flex-wrap: wrap;
+    }
     &__colour {
       position: realtive;
-      width: 100%;
+      width: 50%;
 
       label {
         position: absolute;
         font-size: 8px;
         font-weight: bold !important;
-        top: 3px;
-        left: 10px;
+        top: 12px;
+        left: 20px;
         color: #377cff;
       }
 

@@ -33,7 +33,7 @@ $SiteConfig.typeCSS
 
                 <div class="type__colour type__colour--secondary">
                     <div class="type__colour__item">
-                        <label for="secondary-color">Secondary COLOUR</label>
+                        <label for="secondary-color">SECONDARY COLOUR</label>
                         <input class="type__colour__item__input [ js-colour ]" value="#333" type="text" id="secondary-color" placeholder="#333">
                         <div class="type__colour__item__colour [ js-type-colour ]">
                             <span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]" style="background:#333;"></span>
@@ -103,7 +103,7 @@ $SiteConfig.typeCSS
                                 <%--Font Size--%>
                                 <%-------------%>
                                 <div class="type__item__content__item type__item__content__item--number">
-                                    <input class="[ js-font-size ]" type="number" id="selector_{$Selector}_font-size" placeholder="45" data-default="45" min="0" max="100" step="0.1" value="16">
+                                    <input class="[ js-font-size ]" type="number" id="selector_{$Selector}_font-size" placeholder="45" data-default="45" min="0" max="100" step="1" value="16">
                                     <label for="selector_{$Selector}_font-size">FONT SIZE</label>
                                     <span class="type__item__content__item__unit">px</span>
                                     <span class="type__item__content__item__increase [ js-increase-number ]">+</span>
@@ -136,7 +136,7 @@ $SiteConfig.typeCSS
                                 <%--Font Background Colour--%>
                                 <%--------------------------%>
                                 <div class="type__item__content__item type__item__content__item--colour">
-                                    <input class="type__item__content__item__input [ js-background ]" value="transparent" type="text" id="selector_{$Selector}_background-color" placeholder="transparent">
+                                    <input class="type__item__content__item__input [ js-background ]" value="#fffff" type="text" id="selector_{$Selector}_background-color" placeholder="#fffff">
                                     <label for="selector_{$Selector}_background-color">BACKGROUND</label>
                                     <div class="type__item__content__item__colour [ js-type-colour ]">
                                         <span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]"></span>

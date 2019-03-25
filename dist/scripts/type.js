@@ -100,18 +100,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var select2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js");
 /* harmony import */ var select2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(select2__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vanilla_picker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vanilla-picker */ "./node_modules/vanilla-picker/dist/vanilla-picker.mjs");
-/* harmony import */ var rgb_hex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rgb-hex */ "./node_modules/rgb-hex/index.js");
-/* harmony import */ var rgb_hex__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(rgb_hex__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var is_hexcolor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! is-hexcolor */ "./node_modules/is-hexcolor/index.js");
-/* harmony import */ var is_hexcolor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(is_hexcolor__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! webfontloader */ "./node_modules/webfontloader/webfontloader.js");
-/* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(webfontloader__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var json_to_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! json-to-css */ "./node_modules/json-to-css/index.js");
-/* harmony import */ var json_to_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(json_to_css__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../scss/style.scss */ "./scss/style.scss");
-/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var is_hexcolor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! is-hexcolor */ "./node_modules/is-hexcolor/index.js");
+/* harmony import */ var is_hexcolor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(is_hexcolor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! webfontloader */ "./node_modules/webfontloader/webfontloader.js");
+/* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(webfontloader__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var json_to_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! json-to-css */ "./node_modules/json-to-css/index.js");
+/* harmony import */ var json_to_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(json_to_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../scss/style.scss */ "./scss/style.scss");
+/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_7__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 console.log('%cType 0.1', 'padding:5px;color: #fff; background: #377cff;');
@@ -122,6 +120,8 @@ Dependencies
 
 
 
+
+var rgbaToHex = __webpack_require__(/*! hex-and-rgba */ "./node_modules/hex-and-rgba/index.js").rgbaToHex;
 
 
 
@@ -155,7 +155,7 @@ var createSingleStyleSet = function createSingleStyleSet($el) {
 };
 
 var updateInputs = function updateInputs(tags) {
-  Object(lodash__WEBPACK_IMPORTED_MODULE_7__["forEach"])(tags, function (value, key) {
+  Object(lodash__WEBPACK_IMPORTED_MODULE_6__["forEach"])(tags, function (value, key) {
     var tag = key.replace('#type ', '');
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-family")).val(value['font-family']).trigger('change');
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-weight")).val(value['font-weight']).trigger('change');
@@ -170,9 +170,9 @@ var updateInputs = function updateInputs(tags) {
 
 var createStyles = function createStyles() {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-item').each(function () {
-    Object(lodash__WEBPACK_IMPORTED_MODULE_7__["assign"])(styles, createSingleStyleSet(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)));
+    Object(lodash__WEBPACK_IMPORTED_MODULE_6__["assign"])(styles, createSingleStyleSet(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)));
   });
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#typeStyles').html(json_to_css__WEBPACK_IMPORTED_MODULE_6___default.a.of(styles));
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#typeStyles').html(json_to_css__WEBPACK_IMPORTED_MODULE_5___default.a.of(styles));
 };
 
 var saveStyles = function saveStyles() {
@@ -180,7 +180,7 @@ var saveStyles = function saveStyles() {
     url: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-save-type-settings').attr('data-api'),
     type: 'POST',
     data: {
-      'css': json_to_css__WEBPACK_IMPORTED_MODULE_6___default.a.of(styles),
+      'css': json_to_css__WEBPACK_IMPORTED_MODULE_5___default.a.of(styles),
       'json': styles
     }
   }).done(function (response) {
@@ -205,9 +205,9 @@ var loadFonts = function loadFonts() {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-font-select').each(function () {
     fontsToLoad.push(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('option:selected').val() + ':100,300,400,600,700,800,900');
   });
-  webfontloader__WEBPACK_IMPORTED_MODULE_5___default.a.load({
+  webfontloader__WEBPACK_IMPORTED_MODULE_4___default.a.load({
     google: {
-      families: Object(lodash__WEBPACK_IMPORTED_MODULE_7__["uniq"])(fontsToLoad)
+      families: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["uniq"])(fontsToLoad)
     }
   });
 };
@@ -256,30 +256,31 @@ $fontSelect.each(function () {
     return loadFonts();
   });
 });
+var isOk = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test('#ac3');
 jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-colour').each(function () {
   var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
   var picker = new vanilla_picker__WEBPACK_IMPORTED_MODULE_2__["default"]({
     parent: $this[0],
-    color: '#333333',
+    color: '#111111',
     editorFormat: 'hex',
-    alpha: false,
     onChange: function onChange(color) {
       var rgba = color._rgba;
 
       if (rgba) {
-        var hex = rgb_hex__WEBPACK_IMPORTED_MODULE_3___default()(rgba[0], rgba[1], rgba[2]);
+        var hex = rgbaToHex(rgba[0], rgba[1], rgba[2], rgba[3]);
         $this.find('.js-type-colour-swatch').css({
-          'background': "#".concat(hex)
+          'background': "".concat(hex)
         });
-        $this.parent().find('input').val("#".concat(hex));
+        $this.parent().find('input').val("".concat(hex));
         createStyles();
       }
     }
   });
   $this.parent().find('.type__item__content__item__input').on('keyup change', function () {
     var val = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val();
+    console.log(val);
 
-    if (val.length > 5 && is_hexcolor__WEBPACK_IMPORTED_MODULE_4___default()(val)) {
+    if (val.length > 6 && val !== 'transparent') {
       picker.setColour(val);
       $this.find('.js-type-colour-swatch').css({
         'background': val
@@ -963,6 +964,141 @@ return dragTracker;
 
 })));
 
+
+/***/ }),
+
+/***/ "./node_modules/hex-and-rgba/index.js":
+/*!********************************************!*\
+  !*** ./node_modules/hex-and-rgba/index.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_RESULT__;
+
+
+// Note: it is not '#?' , because I want all HEX code strings to contain the leading hash char.
+var validHex = new RegExp(/^#([0-9a-f]{8}|[0-9a-f]{6}|[0-9a-f]{4}|[0-9a-f]{3})$/i);
+
+// array to rgba string converter
+var rgbaArrToString = function() { 
+    return 'rgba(' + this[0] + ',' + this[1] + ','+ this[2] + ','+ this[3].toFixed(1) + ')';
+};
+
+// global Object for export
+var hexAndRgba = {},
+    self = hexAndRgba;
+
+/**
+ * Check an RGBA value set for validity
+ * @param {number} r    from 0 to 255
+ * @param {number} g    from 0 to 255 
+ * @param {number} b    from 0 to 255
+ * @param {float}  [a]  from 0.0 to 1.0
+ * @returns {boolean}
+ */
+hexAndRgba.isValidRgba = function isValidRgba(r,g,b,a)
+{
+    return !!self.rgbaToHex.apply(self, arguments);
+}
+
+/**
+ * Check a HEX code for validity
+ * @param {string} hex  a HEX code string to check
+ * @returns {boolean}
+ */
+hexAndRgba.isValidHex = function isValidHex(hex)
+{
+    return validHex.test(hex);
+}
+
+/**
+ * convert a RGBA value set to a HEX code string
+ * @param {number} r    from 0 to 255
+ * @param {number} g    from 0 to 255 
+ * @param {number} b    from 0 to 255
+ * @param {float}  [a]  from 0.0 to 1.0
+ * @param {Array}  r    array with the RGBA values
+ * @returns {string|false}  HEX code string in lowercase
+ */
+hexAndRgba.rgbaToHex = function rgbaToHex(r,g,b,a)
+{
+    if (arguments.length == 1 && Array.isArray(arguments[0]))
+        return self.rgbaToHex.apply(null, arguments[0]);    // allow array as params substitution
+
+    if (arguments.length < 3 || arguments.length > 4)       // arguments length check
+        return false;
+
+    var args = Array.prototype.slice.call(arguments);       // Arguments to Array conversion
+    
+    if (args.length == 4)                                   // is with optional alpha value
+        args[3] = Math.floor(255 * args[3]);                // opacity float to 255-based value
+
+    var parts = args.map(function(e){ var r = (+e).toString(16); r.length==1 && (r='0'+r); return r; }, []);
+    
+    return (!~parts.indexOf('NaN'))                         // if a part could not be converted to an int, there is a 'NaN'
+        ? '#' + parts.join('')
+        : false;
+}
+
+/**
+ * convert a HEX code string to a RGBA value set
+ * @param {string} hex  a HEX code string to check
+ * @returns {Array|false}
+ */
+hexAndRgba.hexToRgba = function hexToRgba(hex)
+{
+    if (! self.isValidHex(hex))
+        return false;
+
+    var code = hex.match(validHex)[1];
+
+    if (code.length == 3 || code.length == 4)               // fix 3 and 4 letter codes
+        code = code.match(/./g).reduce( function(i,e) { return i+e+e; }, '');
+                                                            // convert to int from hex
+    var codePairs = code.match(/.{1,2}/g).map( function(e) { return parseInt(e, 16); });
+
+    if (codePairs.length == 4)
+        codePairs[3] = codePairs[3] / 255;
+    else
+        codePairs[3] = 1.0;
+
+    // allow string access
+    codePairs.toString = rgbaArrToString;
+
+    return codePairs;
+}
+
+/**
+ * get the RGBA values from an rgba String
+ * @param {string} rgba
+ * @returns {Array|false}
+ */
+hexAndRgba.rgbaToArray = function rgbaToArray(rgba)
+{
+                                                            // convert string to int
+    var codePairs = rgba.match(/([0-9\.]+)/g).map( function(e) { return +e; });
+
+
+    if (codePairs.length < 3 || codePairs.length > 4)       // arguments length check
+        return false;
+
+    // allow string access
+    codePairs.toString = rgbaArrToString;
+
+    return codePairs;
+}
+
+
+// AMD, CommonJS, Browser
+if (true) {
+    !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+        return hexAndRgba;
+    }).call(exports, __webpack_require__, exports, module),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+}
+else {}
 
 /***/ }),
 
@@ -28542,58 +28678,6 @@ module.exports = Css
 }.call(this));
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
-
-/***/ }),
-
-/***/ "./node_modules/rgb-hex/index.js":
-/*!***************************************!*\
-  !*** ./node_modules/rgb-hex/index.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/* eslint-disable no-mixed-operators */
-module.exports = (red, green, blue, alpha) => {
-	const isPercent = (red + (alpha || '')).toString().includes('%');
-
-	if (typeof red === 'string') {
-		const res = red.match(/(0?\.?\d{1,3})%?\b/g).map(Number);
-		// TODO: use destructuring when targeting Node.js 6
-		red = res[0];
-		green = res[1];
-		blue = res[2];
-		alpha = res[3];
-	} else if (alpha !== undefined) {
-		alpha = parseFloat(alpha);
-	}
-
-	if (typeof red !== 'number' ||
-		typeof green !== 'number' ||
-		typeof blue !== 'number' ||
-		red > 255 ||
-		green > 255 ||
-		blue > 255) {
-		throw new TypeError('Expected three numbers below 256');
-	}
-
-	if (typeof alpha === 'number') {
-		if (!isPercent && alpha >= 0 && alpha <= 1) {
-			alpha = Math.round(255 * alpha);
-		} else if (isPercent && alpha >= 0 && alpha <= 100) {
-			alpha = Math.round(255 * alpha / 100);
-		} else {
-			throw new TypeError(`Expected alpha value (${alpha}) as a fraction or percentage`);
-		}
-		alpha = (alpha | 1 << 8).toString(16).slice(1);
-	} else {
-		alpha = '';
-	}
-
-	return ((blue | green << 8 | red << 16) | 1 << 24).toString(16).slice(1) + alpha;
-};
-
 
 /***/ }),
 

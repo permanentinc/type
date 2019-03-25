@@ -2,10 +2,12 @@
 // Type Preview
 //------------------------------------------------------------------
 
-$primary: var(--primary);
+
+#type {
+padding-left:20rem
+} 
 
 #typeSettings {
-  background: $primary !important;
 
   * {
     box-sizing: border-box;
@@ -76,8 +78,8 @@ $primary: var(--primary);
           cursor: pointer;
           outline: 1px solid #ddd;
           right: 18px;
-          width: 32px;
-          height: 32px;
+          width: 26px;
+          height: 26px;
           bottom: 18px;
           $size: 10px;
           background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),

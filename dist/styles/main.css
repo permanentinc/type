@@ -667,43 +667,135 @@
         background: #377cff !important;
         color: #fff !important; }
 
-#typeSettings {
-  background: var(--primary) !important; }
-  #typeSettings * {
-    box-sizing: border-box; }
-  #typeSettings .type {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 20rem;
-    top: 0;
-    z-index: 999;
-    background: #fff;
-    box-shadow: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12), 0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1); }
-    #typeSettings .type * {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-      font-weight: normal !important; }
-    #typeSettings .type__scroll {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
-    #typeSettings .type__colour {
-      position: realtive;
-      width: 50%; }
-      #typeSettings .type__colour label {
-        position: absolute;
-        font-size: 8px;
-        font-weight: bold !important;
-        top: 12px;
-        left: 20px;
-        color: #377cff; }
-      #typeSettings .type__colour__item {
+#type {
+  padding-left: 20rem; }
+
+#typeSettings * {
+  box-sizing: border-box; }
+
+#typeSettings .type {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 20rem;
+  top: 0;
+  z-index: 999;
+  background: #fff;
+  box-shadow: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12), 0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1); }
+  #typeSettings .type * {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    font-weight: normal !important; }
+  #typeSettings .type__scroll {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
+  #typeSettings .type__colour {
+    position: realtive;
+    width: 50%; }
+    #typeSettings .type__colour label {
+      position: absolute;
+      font-size: 8px;
+      font-weight: bold !important;
+      top: 12px;
+      left: 20px;
+      color: #377cff; }
+    #typeSettings .type__colour__item {
+      width: 100%;
+      border-bottom: 1px solid #ebebeb;
+      padding: 10px;
+      position: relative; }
+      #typeSettings .type__colour__item__input {
+        margin: 0;
         width: 100%;
-        border-bottom: 1px solid #ebebeb;
-        padding: 10px;
-        position: relative; }
-        #typeSettings .type__colour__item__input {
+        outline: 0;
+        height: auto;
+        border: 0;
+        background: transparent;
+        border: 1px solid #d5d8dd;
+        border-radius: 0;
+        display: block;
+        margin: 0;
+        font-size: 14px;
+        padding: 20px 10px 10px 10px;
+        color: #19191a;
+        transition: all 111ms ease;
+        line-height: 17px !important; }
+      #typeSettings .type__colour__item__colour {
+        border: 2px solid white;
+        display: block;
+        position: absolute;
+        cursor: pointer;
+        outline: 1px solid #ddd;
+        right: 18px;
+        width: 26px;
+        height: 26px;
+        bottom: 18px;
+        background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(135deg, transparent 75%, #ccc 75%);
+        background-size: 5px 5px;
+        background-position: 0 0, 2.5px 0, 2.5px -2.5px, 0px 2.5px; }
+        #typeSettings .type__colour__item__colour__swatch {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0; }
+  #typeSettings .type__header {
+    padding: 15px 10px; }
+    #typeSettings .type__header svg {
+      width: 36px;
+      height: auto;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px; }
+      #typeSettings .type__header svg path {
+        fill: #333; }
+    #typeSettings .type__header h5 {
+      color: #333;
+      margin: 0;
+      display: inline-block;
+      vertical-align: middle; }
+  #typeSettings .type__item {
+    width: 100%;
+    border-bottom: 1px solid #ebebeb; }
+    #typeSettings .type__item__heading {
+      color: #377cff;
+      padding: 5px 10px;
+      cursor: pointer;
+      position: relative; }
+      #typeSettings .type__item__heading:after {
+        position: absolute;
+        right: 10px;
+        top: 11px;
+        content: "";
+        display: inline-block;
+        border-right: 2px solid #377cff;
+        border-bottom: 2px solid #377cff;
+        width: 5px;
+        height: 5px;
+        -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+        transition: all 333ms ease; }
+      #typeSettings .type__item__heading.active:after {
+        -webkit-transform: rotate(-135deg);
+            -ms-transform: rotate(-135deg);
+                transform: rotate(-135deg); }
+    #typeSettings .type__item__content {
+      display: none; }
+      #typeSettings .type__item__content .flex {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+        padding: 10px; }
+      #typeSettings .type__item__content__item {
+        position: relative;
+        width: calc(50% - 10px);
+        margin-bottom: 10px; }
+        #typeSettings .type__item__content__item__input {
           margin: 0;
           width: 100%;
           outline: 0;
@@ -719,197 +811,107 @@
           color: #19191a;
           transition: all 111ms ease;
           line-height: 17px !important; }
-        #typeSettings .type__colour__item__colour {
+        #typeSettings .type__item__content__item__unit {
+          position: absolute;
+          font-size: 9px;
+          font-weight: bold !important;
+          bottom: 3px;
+          right: 40px;
+          color: #377cff; }
+        #typeSettings .type__item__content__item__decrease {
+          border: 1px solid #ddd;
+          position: absolute;
+          display: block;
+          width: 25px;
+          height: 25px;
+          bottom: 0;
+          right: 0;
+          text-align: center;
+          line-height: 20px;
+          color: #ddd;
+          cursor: pointer;
+          -webkit-user-select: none;
+              -ms-user-select: none;
+                  user-select: none;
+          background: white; }
+        #typeSettings .type__item__content__item__increase {
+          border: 1px solid #ddd;
+          position: absolute;
+          display: block;
+          width: 25px;
+          height: 25px;
+          top: 0;
+          right: 0;
+          text-align: center;
+          line-height: 20px;
+          color: #ddd;
+          cursor: pointer;
+          -webkit-user-select: none;
+              -ms-user-select: none;
+                  user-select: none;
+          background: white; }
+        #typeSettings .type__item__content__item__colour {
           border: 2px solid white;
           display: block;
           position: absolute;
           cursor: pointer;
           outline: 1px solid #ddd;
-          right: 18px;
-          width: 32px;
-          height: 32px;
-          bottom: 18px;
+          right: 10px;
+          width: 24px;
+          height: 24px;
+          bottom: 8px;
           background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(135deg, transparent 75%, #ccc 75%);
           background-size: 5px 5px;
           background-position: 0 0, 2.5px 0, 2.5px -2.5px, 0px 2.5px; }
-          #typeSettings .type__colour__item__colour__swatch {
+          #typeSettings .type__item__content__item__colour__swatch {
             position: absolute;
             left: 0;
             right: 0;
             top: 0;
             bottom: 0; }
-    #typeSettings .type__header {
-      padding: 15px 10px; }
-      #typeSettings .type__header svg {
-        width: 36px;
-        height: auto;
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: 5px; }
-        #typeSettings .type__header svg path {
-          fill: #333; }
-      #typeSettings .type__header h5 {
-        color: #333;
-        margin: 0;
-        display: inline-block;
-        vertical-align: middle; }
-    #typeSettings .type__item {
-      width: 100%;
-      border-bottom: 1px solid #ebebeb; }
-      #typeSettings .type__item__heading {
-        color: #377cff;
-        padding: 5px 10px;
-        cursor: pointer;
-        position: relative; }
-        #typeSettings .type__item__heading:after {
+        #typeSettings .type__item__content__item--select label {
           position: absolute;
-          right: 10px;
-          top: 11px;
-          content: "";
-          display: inline-block;
-          border-right: 2px solid #377cff;
-          border-bottom: 2px solid #377cff;
-          width: 5px;
-          height: 5px;
-          -webkit-transform: rotate(45deg);
-              -ms-transform: rotate(45deg);
-                  transform: rotate(45deg);
-          transition: all 333ms ease; }
-        #typeSettings .type__item__heading.active:after {
-          -webkit-transform: rotate(-135deg);
-              -ms-transform: rotate(-135deg);
-                  transform: rotate(-135deg); }
-      #typeSettings .type__item__content {
-        display: none; }
-        #typeSettings .type__item__content .flex {
-          display: -ms-flexbox;
-          display: flex;
-          -ms-flex-wrap: wrap;
-              flex-wrap: wrap;
-          -ms-flex-pack: justify;
-              justify-content: space-between;
-          padding: 10px; }
-        #typeSettings .type__item__content__item {
-          position: relative;
-          width: calc(50% - 10px);
-          margin-bottom: 10px; }
-          #typeSettings .type__item__content__item__input {
-            margin: 0;
-            width: 100%;
-            outline: 0;
-            height: auto;
-            border: 0;
-            background: transparent;
-            border: 1px solid #d5d8dd;
-            border-radius: 0;
-            display: block;
-            margin: 0;
-            font-size: 14px;
-            padding: 20px 10px 10px 10px;
-            color: #19191a;
-            transition: all 111ms ease;
-            line-height: 17px !important; }
-          #typeSettings .type__item__content__item__unit {
-            position: absolute;
-            font-size: 9px;
-            font-weight: bold !important;
-            bottom: 3px;
-            right: 40px;
-            color: #377cff; }
-          #typeSettings .type__item__content__item__decrease {
-            border: 1px solid #ddd;
-            position: absolute;
-            display: block;
-            width: 25px;
-            height: 25px;
-            bottom: 0;
-            right: 0;
-            text-align: center;
-            line-height: 20px;
-            color: #ddd;
-            cursor: pointer;
-            -webkit-user-select: none;
-                -ms-user-select: none;
-                    user-select: none;
-            background: white; }
-          #typeSettings .type__item__content__item__increase {
-            border: 1px solid #ddd;
-            position: absolute;
-            display: block;
-            width: 25px;
-            height: 25px;
-            top: 0;
-            right: 0;
-            text-align: center;
-            line-height: 20px;
-            color: #ddd;
-            cursor: pointer;
-            -webkit-user-select: none;
-                -ms-user-select: none;
-                    user-select: none;
-            background: white; }
-          #typeSettings .type__item__content__item__colour {
-            border: 2px solid white;
-            display: block;
-            position: absolute;
-            cursor: pointer;
-            outline: 1px solid #ddd;
-            right: 10px;
-            width: 24px;
-            height: 24px;
-            bottom: 8px;
-            background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(135deg, transparent 75%, #ccc 75%);
-            background-size: 5px 5px;
-            background-position: 0 0, 2.5px 0, 2.5px -2.5px, 0px 2.5px; }
-            #typeSettings .type__item__content__item__colour__swatch {
-              position: absolute;
-              left: 0;
-              right: 0;
-              top: 0;
-              bottom: 0; }
-          #typeSettings .type__item__content__item--select label {
-            position: absolute;
-            font-size: 8px;
-            font-weight: bold !important;
-            top: 3px;
-            left: 10px;
-            color: #377cff; }
-          #typeSettings .type__item__content__item--colour label {
-            position: absolute;
-            font-size: 8px;
-            font-weight: bold !important;
-            top: 3px;
-            left: 10px;
-            color: #377cff; }
-          #typeSettings .type__item__content__item--number label {
-            position: absolute;
-            font-size: 8px;
-            font-weight: bold !important;
-            top: 3px;
-            left: 10px;
-            color: #377cff; }
-          #typeSettings .type__item__content__item--number input {
-            margin: 0;
-            width: 100%;
-            outline: 0;
-            height: auto;
-            border: 0;
-            background: transparent;
-            border: 1px solid #d5d8dd;
-            border-radius: 0;
-            display: block;
-            margin: 0;
-            font-size: 14px;
-            padding: 20px 10px 10px 10px;
-            color: #19191a;
-            transition: all 111ms ease;
-            line-height: 17px !important; }
-    #typeSettings .type__button {
-      border-radius: 0;
-      background: #377cff;
-      float: right;
-      margin: 1rem 0.5rem;
-      padding: 10px 30px; }
+          font-size: 8px;
+          font-weight: bold !important;
+          top: 3px;
+          left: 10px;
+          color: #377cff; }
+        #typeSettings .type__item__content__item--colour label {
+          position: absolute;
+          font-size: 8px;
+          font-weight: bold !important;
+          top: 3px;
+          left: 10px;
+          color: #377cff; }
+        #typeSettings .type__item__content__item--number label {
+          position: absolute;
+          font-size: 8px;
+          font-weight: bold !important;
+          top: 3px;
+          left: 10px;
+          color: #377cff; }
+        #typeSettings .type__item__content__item--number input {
+          margin: 0;
+          width: 100%;
+          outline: 0;
+          height: auto;
+          border: 0;
+          background: transparent;
+          border: 1px solid #d5d8dd;
+          border-radius: 0;
+          display: block;
+          margin: 0;
+          font-size: 14px;
+          padding: 20px 10px 10px 10px;
+          color: #19191a;
+          transition: all 111ms ease;
+          line-height: 17px !important; }
+  #typeSettings .type__button {
+    border-radius: 0;
+    background: #377cff;
+    float: right;
+    margin: 1rem 0.5rem;
+    padding: 10px 30px; }
 
 
 /*# sourceMappingURL=../type/type.map.js*/

@@ -2,7 +2,11 @@
 // Type Preview
 //------------------------------------------------------------------
 
+$primary: var(--primary);
+
 #typeSettings {
+  background: $primary !important;
+
   * {
     box-sizing: border-box;
   }
@@ -27,6 +31,7 @@
       display: flex;
       flex-wrap: wrap;
     }
+
     &__colour {
       position: realtive;
       width: 50%;

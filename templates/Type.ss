@@ -1,4 +1,9 @@
-<style id="typeStyles">$SiteConfig.typeCSS</style>
+<style id="typeStyles">
+:root{
+--primary: #ff0000;
+}
+$SiteConfig.typeCSS
+</style>
 
 <% if $CurrentMember %>
     <% require css("vendor/permanentinc/type/dist/styles/main.css") %>

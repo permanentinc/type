@@ -2,8 +2,6 @@
 // Type Preview
 //------------------------------------------------------------------
 
-$white: #fff;
-
 #typeSettings {
   * {
     box-sizing: border-box;
@@ -15,13 +13,79 @@ $white: #fff;
     bottom: 0;
     width: 20rem;
     top: 0;
-    background: $white;
+    z-index: 999;
+    background: #fff;
     box-shadow: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12),
       0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1);
 
     * {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
       font-weight: normal !important;
+    }
+
+    &__colour {
+      position: realtive;
+      width: 100%;
+
+      label {
+        position: absolute;
+        font-size: 8px;
+        font-weight: bold !important;
+        top: 3px;
+        left: 10px;
+        color: #377cff;
+      }
+
+      &__item {
+        width: 100%;
+        border-bottom: 1px solid #ebebeb;
+        padding: 10px;
+        position: relative;
+
+        &__input {
+          margin: 0;
+          width: 100%;
+          outline: 0;
+          height: auto;
+          border: 0;
+          background: transparent;
+          border: 1px solid #d5d8dd;
+          border-radius: 0;
+          display: block;
+          margin: 0;
+          font-size: 14px;
+          padding: 20px 10px 10px 10px;
+          color: #19191a;
+          transition: all 111ms ease;
+          line-height: 17px !important;
+        }
+
+        &__colour {
+          border: 2px solid white;
+          display: block;
+          position: absolute;
+          cursor: pointer;
+          outline: 1px solid #ddd;
+          right: 18px;
+          width: 32px;
+          height: 32px;
+          bottom: 18px;
+          $size: 10px;
+          background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
+            linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%),
+            linear-gradient(135deg, transparent 75%, #ccc 75%);
+          background-size: $size / 2 $size / 2;
+          background-position: 0 0, $size / 4 0, $size / 4 $size / -4, 0px $size / 4;
+
+          &__swatch {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+          }
+        }
+      }
     }
 
     &__header {

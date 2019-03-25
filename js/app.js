@@ -34,7 +34,7 @@ const createSingleStyleSet = ($el) => {
         ['#type ' + $el.attr('data-tag')]: {
             'font-family': $el.find('.js-font-select').val(),
             'font-weight': $el.find('.js-type-select').val(),
-            'font-size': $el.find('.js-font-size').val() + 'rem',
+            'font-size': $el.find('.js-font-size').val() + 'px',
             'font-style': $el.find('.js-style-select').val(),
             'color': $el.find('.js-colour').val(),
             'background': $el.find('.js-background').val(),
@@ -45,11 +45,24 @@ const createSingleStyleSet = ($el) => {
 };
 
 
+const updateInputs = (tags) => {
+    forEach(tags, (value, key) => {
+        let tag = key.replace('#type ', '');
+        $(`#selector_${tag}_font-family`).val(value['font-family']).trigger('change');
+        $(`#selector_${tag}_font-weight`).val(value['font-weight']).trigger('change');
+        $(`#selector_${tag}_font-size`).val(value['font-size'].replace('px', ''));
+        $(`#selector_${tag}_font-style`).val(value['font-style']).trigger('change');
+        $(`#selector_${tag}_font-colour`).val(value['color']).trigger('change');
+        $(`#selector_${tag}_background-color`).val(value['background']).trigger('change');
+        $(`#selector_${tag}_text-align`).val(value['text-align']).trigger('change')
+        $(`#selector_${tag}_line-height`).val(value['line-height'])
+    });
+};
+
 const createStyles = () => {
     $('.js-type-item').each(function () {
         assign(styles, createSingleStyleSet($(this)));
     });
-
     $('#typeStyles').html(Css.of(styles));
 };
 
@@ -62,6 +75,18 @@ const saveStyles = () => {
         console.log(response);
     });
 };
+
+const loadStyles = () => {
+    $.ajax({
+        url: $('.js-load-type-settings').attr('data-api'),
+        type: 'GET',
+        dataType: 'json'
+    }).done(function (response) {
+        updateInputs(response);
+    });
+};
+
+if ($('.js-load-type-settings').length) loadStyles();
 
 
 const loadFonts = (fontsToLoad = []) => {
@@ -125,7 +150,8 @@ $('.js-type-colour').each(function () {
             if (rgba) {
                 let hex = rgbHex(rgba[0], rgba[1], rgba[2]);
                 $this.find('.js-type-colour-swatch').css({ 'background': `#${hex}` })
-                $this.parent().find('input').val(`#${hex}`)
+                $this.parent().find('input').val(`#${hex}`);
+                createStyles();
             }
         }
     });
@@ -165,8 +191,9 @@ $('.js-slide-toggle').on('click', function () {
 
 $('.js-type-select').on('change', () => createStyles());
 $('.js-font-select').on('change', () => createStyles());
-$('.js-colour').on('change', () => createStyles());
 $('.js-background').on('change', () => createStyles());
+$('.js-align-select').on('change', () => createStyles());
+$('.js-style-select').on('change', () => createStyles());
 
 $('.js-save-type-settings').on('click', function () {
     createStyles();

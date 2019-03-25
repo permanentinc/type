@@ -35,15 +35,4 @@ class TypeExtension extends Extension
         ]);
     }
 
-   
-
-
-    public function SaveCSS(SS_HTTPRequest $request)
-    {
-        $data = $request->postVars();
-        $siteConfig = SiteConfig::current_site_config();
-        $siteConfig->setField('TypeSettingsCSS', $data['css']);
-        $siteConfig->write();
-        return json_encode($data['css'], true);
-    }
 }

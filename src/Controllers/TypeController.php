@@ -14,7 +14,6 @@ class TypeController extends Controller
         'load'
     ];
 
-
     public function getStandardJsonResponse($data, $method = 'json', $message = '', $code = 200, $status = 'success')
     {
         $elapsed = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
@@ -37,18 +36,18 @@ class TypeController extends Controller
         return $response;
     }
 
-    public function save( HTTPRequest $request)
+    public function save(HTTPRequest $request)
     {
-
         $siteConfig = SiteConfig::current_site_config();
-        $siteConfig->setField( 'typeCSS', serialize($request->postVar('css')));
-        $siteConfig->setField( 'typeJSON', serialize($request->postVar( 'json')));
+        $siteConfig->setField('typeCSS', serialize($request->postVar('css')));
+        $siteConfig->setField('typeJSON', serialize($request->postVar('json')));
         $siteConfig->write();
     }
 
-    public function load()
+    public function load(HTTPRequest $request)
     {
-        var_dump('load load load load load load load load');
+        $siteConfig = SiteConfig::current_site_config();
+        return json_encode(unserialize($siteConfig->getField('typeJSON')));
     }
 }
  

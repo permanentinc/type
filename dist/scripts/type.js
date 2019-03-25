@@ -145,12 +145,26 @@ var createSingleStyleSet = function createSingleStyleSet($el) {
   return _defineProperty({}, '#type ' + $el.attr('data-tag'), {
     'font-family': $el.find('.js-font-select').val(),
     'font-weight': $el.find('.js-type-select').val(),
-    'font-size': $el.find('.js-font-size').val() + 'rem',
+    'font-size': $el.find('.js-font-size').val() + 'px',
     'font-style': $el.find('.js-style-select').val(),
     'color': $el.find('.js-colour').val(),
     'background': $el.find('.js-background').val(),
     'text-align': $el.find('.js-align-select').val(),
     'line-height': $el.find('.js-line-height').val()
+  });
+};
+
+var updateInputs = function updateInputs(tags) {
+  Object(lodash__WEBPACK_IMPORTED_MODULE_7__["forEach"])(tags, function (value, key) {
+    var tag = key.replace('#type ', '');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-family")).val(value['font-family']).trigger('change');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-weight")).val(value['font-weight']).trigger('change');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-size")).val(value['font-size'].replace('px', ''));
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-style")).val(value['font-style']).trigger('change');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-colour")).val(value['color']).trigger('change');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_background-color")).val(value['background']).trigger('change');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_text-align")).val(value['text-align']).trigger('change');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_line-height")).val(value['line-height']);
   });
 };
 
@@ -173,6 +187,18 @@ var saveStyles = function saveStyles() {
     console.log(response);
   });
 };
+
+var loadStyles = function loadStyles() {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+    url: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-load-type-settings').attr('data-api'),
+    type: 'GET',
+    dataType: 'json'
+  }).done(function (response) {
+    updateInputs(response);
+  });
+};
+
+if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-load-type-settings').length) loadStyles();
 
 var loadFonts = function loadFonts() {
   var fontsToLoad = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -246,6 +272,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-colour').each(function (
           'background': "#".concat(hex)
         });
         $this.parent().find('input').val("#".concat(hex));
+        createStyles();
       }
     }
   });
@@ -287,10 +314,13 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-select').on('change', fu
 jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-font-select').on('change', function () {
   return createStyles();
 });
-jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-colour').on('change', function () {
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-background').on('change', function () {
   return createStyles();
 });
-jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-background').on('change', function () {
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-align-select').on('change', function () {
+  return createStyles();
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-style-select').on('change', function () {
   return createStyles();
 });
 jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-save-type-settings').on('click', function () {

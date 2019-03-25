@@ -66,12 +66,13 @@ const createStyles = () => {
 };
 
 const saveStyles = () => {
+    $('body').addClass('typeBusy');
     $.ajax({
         url: $('.js-save-type-settings').attr('data-api'),
         type: 'POST',
         data: { 'css': Css.of(styles), 'json': styles }
     }).done(function (response) {
-        console.log(response);
+        setTimeout(() => $('body').removeClass('typeBusy'), 400);
     });
 };
 
@@ -125,7 +126,7 @@ $fontSelect.each(function () {
     $this.on('select2:select', () => loadFonts());
 
 });
-var isOk = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test('#ac3')
+
 $('.js-type-colour').each(function () {
     let $this = $(this);
     let picker = new Picker({
@@ -142,10 +143,9 @@ $('.js-type-colour').each(function () {
             }
         }
     });
- 
+
     $this.parent().find('.type__item__content__item__input').on('keyup change', function () {
         let val = $(this).val();
-        console.log(val)
         if (val.length > 6 && val !== 'transparent') {
             picker.setColour(val)
             $this.find('.js-type-colour-swatch').css({ 'background': val })
@@ -186,4 +186,12 @@ $('.js-style-select').on('change', () => createStyles());
 $('.js-save-type-settings').on('click', function () {
     createStyles();
     saveStyles();
+});
+
+const toggleTypeSidebar = () => {
+    $('body').toggleClass('typeSettingsOpen');
+};
+
+$('.js-toggle-type-settings').on('click', function () {
+    toggleTypeSidebar();
 });

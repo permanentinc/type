@@ -1,8 +1,4 @@
 <style id="typeStyles"> 
-:root{
-    --primary: #ff0000;
-}
-
 $SiteConfig.typeCSS
 </style>
 
@@ -28,22 +24,23 @@ $SiteConfig.typeCSS
                 <div class="type__colour type__colour--primary">
                     <div class="type__colour__item">
                         <label for="selector_primary_fontcolour">PRIMARY COLOUR</label>
-                        <input class="type__colour__item__input [ js-colour ]" value="#377dff" type="text" id="selector_primary_font-colour" placeholder="#333">
+                        <input class="type__item__content__item__input type__colour__item__input [ js-primary-colour-input ]" value="#377dff" type="text" id="selector_primary_font-colour" placeholder="#333">
+                        <div class="type__colour__item__colour [ js-type-colour ]">
+                            <span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]" style="background:#333;"></span>
+                        </div> 
+                    </div>
+                </div>
+
+                 <div class="type__colour type__colour--secondary">
+                    <div class="type__colour__item">
+                        <label for="selector_secondary_fontcolour">SECONDARY COLOUR</label>
+                        <input class="type__item__content__item__input type__colour__item__input [ js-secondary-colour-input ]" value="#377dff" type="text" id="selector_secondary_font-colour" placeholder="#333">
                         <div class="type__colour__item__colour [ js-type-colour ]">
                             <span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]" style="background:#333;"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="type__colour type__colour--secondary">
-                    <div class="type__colour__item">
-                        <label for="secondary-color">SECONDARY COLOUR</label>
-                        <input class="type__colour__item__input [ js-colour ]" value="#333" type="text" id="secondary-color" placeholder="#333">
-                        <div class="type__colour__item__colour [ js-type-colour ]">
-                            <span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]" style="background:#333;"></span>
-                        </div>
-                    </div>
-                </div>
 
                 <% loop $getTags %>
 
@@ -196,6 +193,10 @@ $SiteConfig.typeCSS
         </div>
     </div>
 <% else %>
+
+<% if $SiteConfig.TypeSettingsJS %>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.28/webfont.js"></script>
     <script>WebFont.load({ google: { families: [$SiteConfig.TypeSettingsJS] } });</script>
+    <% end_if %>
 <% end_if %>
+

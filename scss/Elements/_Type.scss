@@ -2,10 +2,9 @@
 // Type Preview
 //------------------------------------------------------------------
 
+$primary: var(--primary-colour);
+
 .typeSettingsOpen {
-  #type {
-    padding-left: 300px;
-  }
   #typeSettings {
     transform: translateX(0);
   }
@@ -55,7 +54,7 @@
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 300px;
+    width: 320px;
     top: 0;
     z-index: 999;
     background: #fff;
@@ -249,7 +248,7 @@
             position: absolute;
             font-size: 9px;
             font-weight: bold !important;
-            bottom: 3px;
+            bottom: 9px;
             right: 40px;
             color: #377cff;
           }
@@ -268,6 +267,7 @@
             cursor: pointer;
             user-select: none;
             background: white;
+            font-size: 14px;
             margin: 0 !important;
           }
 
@@ -284,6 +284,7 @@
             color: #ddd;
             cursor: pointer;
             user-select: none;
+            font-size: 14px;
             background: white;
           }
 
@@ -410,7 +411,7 @@ $dot-size2: 6px;
     height: $dot-size2;
     background-color: white;
     border: 0;
-    border-radius: 100rem;
+    border-radius: 1000px;
     margin: 0 1px;
     animation-name: wave2;
     animation-duration: 0.5s;
@@ -437,7 +438,7 @@ $dot-size2: 6px;
     margin: 0 auto;
     left: 0;
     right: 0;
-    top: 1.3rem;
+    top: 13px;
 
     &__shadow {
       display: inline-block;

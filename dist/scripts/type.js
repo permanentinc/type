@@ -141,6 +141,13 @@ var $typeSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-select
 var $fontSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-font-select');
 var styles = {};
 
+var createSingleRootStyleSet = function createSingleRootStyleSet($el) {
+  return _defineProperty({}, ':root', {
+    '--primary-colour': jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-primary-colour-input').val(),
+    '--secondary-colour': jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-secondary-colour-input').val()
+  });
+};
+
 var createSingleStyleSet = function createSingleStyleSet($el) {
   return _defineProperty({}, '#type ' + $el.attr('data-tag'), {
     'font-family': $el.find('.js-font-select').val(),
@@ -156,22 +163,29 @@ var createSingleStyleSet = function createSingleStyleSet($el) {
 
 var updateInputs = function updateInputs(tags) {
   Object(lodash__WEBPACK_IMPORTED_MODULE_6__["forEach"])(tags, function (value, key) {
-    var tag = key.replace('#type ', '');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-family")).val(value['font-family']).trigger('change');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-weight")).val(value['font-weight']).trigger('change');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-size")).val(value['font-size'].replace('px', ''));
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-style")).val(value['font-style']).trigger('change');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-colour")).val(value['color']).trigger('change');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_background-color")).val(value['background']).trigger('change');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_text-align")).val(value['text-align']).trigger('change');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_line-height")).val(value['line-height']);
+    if (key === ':root') {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".js-primary-colour-input").val(value['--primary-colour']).trigger('change');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".js-secondary-colour-input").val(value['--secondary-colour']).trigger('change');
+    } else {
+      var tag = key.replace('#type ', '');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-family")).val(value['font-family']).trigger('change');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-weight")).val(value['font-weight']).trigger('change');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-size")).val(value['font-size'].replace('px', ''));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-style")).val(value['font-style']).trigger('change');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-colour")).val(value['color']).trigger('change');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_background-color")).val(value['background']).trigger('change');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_text-align")).val(value['text-align']).trigger('change');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_line-height")).val(value['line-height']);
+    }
   });
+  createStyles();
 };
 
 var createStyles = function createStyles() {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-item').each(function () {
     Object(lodash__WEBPACK_IMPORTED_MODULE_6__["assign"])(styles, createSingleStyleSet(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)));
   });
+  Object(lodash__WEBPACK_IMPORTED_MODULE_6__["assign"])(styles, createSingleRootStyleSet());
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('#typeStyles').html(json_to_css__WEBPACK_IMPORTED_MODULE_5___default.a.of(styles));
 };
 
@@ -220,7 +234,6 @@ $typeSelect.each(function () {
   $this.select2({
     width: '100%',
     minimumResultsForSearch: 20,
-    placeholder: 'Select one...',
     dropdownParent: jquery__WEBPACK_IMPORTED_MODULE_0___default()('#typeSettings')
   });
   $this.on('select2:open', function () {
@@ -243,7 +256,6 @@ $fontSelect.each(function () {
   $this.select2({
     width: '100%',
     minimumResultsForSearch: 20,
-    placeholder: 'Select one...',
     dropdownParent: jquery__WEBPACK_IMPORTED_MODULE_0___default()('#typeSettings')
   });
   $this.on('select2:open', function () {
@@ -336,7 +348,8 @@ var toggleTypeSidebar = function toggleTypeSidebar() {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').toggleClass('typeSettingsOpen');
 };
 
-jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-toggle-type-settings').on('click', function () {
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-toggle-type-settings').on('click', function (e) {
+  e.preventDefault();
   toggleTypeSidebar();
 });
 

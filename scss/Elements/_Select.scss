@@ -75,51 +75,11 @@
       }
     }
   }
-
-  .salesForceForm {
-    .select2-container {
-      border-bottom: 1px solid #333;
-      margin-bottom: 20px;
-    }
-
-    .select2-container--default .select2-selection--multiple .select2-selection__choice {
-      font-size: 12px;
-      border: 0;
-      border-radius: 0;
-      padding: 5px 20px 5px 10px;
-      position: relative;
-      background: #fff;
-      border: 1px solid #eee;
-      margin-bottom: 0;
-    }
-
-    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-      position: absolute;
-      color: #377cff;
-      top: 2px;
-      right: 4px;
-    }
-
-    .select2-selection__rendered {
-      height: auto;
-    }
-
-    .select2-search {
-      margin: 0;
-      font-size: 14px;
-      padding: 0;
-    }
-
-    .select2-search__field {
-      margin: 0;
-    }
-  }
 }
 
 //------------------------------------------------------------------
 // Select 2 Dropdown
 //------------------------------------------------------------------
-
 .select2-dropdown {
   margin: 0;
   border: 0;
@@ -128,8 +88,13 @@
   transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   transform: scaleY(0);
   transform-origin: 50% 0;
-  border:1px solid #377cff;
+  border: 1px solid #377cff;
   box-shadow: -1px 4px 74px -16px rgba(#377cff, 0.25);
+  margin: 0;
+
+  input {
+    margin: 0;
+  }
 
   &.animating {
     transform: scaleY(1);

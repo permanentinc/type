@@ -18,10 +18,6 @@ class TypeExtension extends Extension
         'typeJSON' => 'HTMLText',
     ];
 
-    private static $tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'];
-
-    private static $styles = ['font-family', 'color', 'font-size', 'font-weight', 'font-style', 'text-align', 'line-height', 'letter-spacing'];
-
     public function getTags()
     {
         return  new ArrayList([
@@ -34,5 +30,4 @@ class TypeExtension extends Extension
             new ArrayData(['Selector' => 'p', 'Name' => 'Paragraph'])
         ]);
     }
-
 }

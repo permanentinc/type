@@ -580,37 +580,6 @@
         display: block;
         margin: -3px 0 0 -4px; }
 
-#typeSettings .salesForceForm .select2-container {
-  border-bottom: 1px solid #333;
-  margin-bottom: 20px; }
-
-#typeSettings .salesForceForm .select2-container--default .select2-selection--multiple .select2-selection__choice {
-  font-size: 12px;
-  border: 0;
-  border-radius: 0;
-  padding: 5px 20px 5px 10px;
-  position: relative;
-  background: #fff;
-  border: 1px solid #eee;
-  margin-bottom: 0; }
-
-#typeSettings .salesForceForm .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-  position: absolute;
-  color: #377cff;
-  top: 2px;
-  right: 4px; }
-
-#typeSettings .salesForceForm .select2-selection__rendered {
-  height: auto; }
-
-#typeSettings .salesForceForm .select2-search {
-  margin: 0;
-  font-size: 14px;
-  padding: 0; }
-
-#typeSettings .salesForceForm .select2-search__field {
-  margin: 0; }
-
 .select2-dropdown {
   margin: 0;
   border: 0;
@@ -626,7 +595,10 @@
       -ms-transform-origin: 50% 0;
           transform-origin: 50% 0;
   border: 1px solid #377cff;
-  box-shadow: -1px 4px 74px -16px rgba(55, 124, 255, 0.25); }
+  box-shadow: -1px 4px 74px -16px rgba(55, 124, 255, 0.25);
+  margin: 0; }
+  .select2-dropdown input {
+    margin: 0; }
   .select2-dropdown.animating {
     -webkit-transform: scaleY(1);
         -ms-transform: scaleY(1);
@@ -666,9 +638,6 @@
       .select2-dropdown .select2-results__option[aria-selected="true"] {
         background: #377cff !important;
         color: #fff !important; }
-
-.typeSettingsOpen #type {
-  padding-left: 300px; }
 
 .typeSettingsOpen #typeSettings {
   -webkit-transform: translateX(0);
@@ -715,7 +684,7 @@
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 300px;
+    width: 320px;
     top: 0;
     z-index: 999;
     background: #fff;
@@ -867,7 +836,7 @@
             position: absolute;
             font-size: 9px;
             font-weight: bold !important;
-            bottom: 3px;
+            bottom: 9px;
             right: 40px;
             color: #377cff; }
           #typeSettings .type__item__content__item__decrease {
@@ -886,6 +855,7 @@
                 -ms-user-select: none;
                     user-select: none;
             background: white;
+            font-size: 14px;
             margin: 0 !important; }
           #typeSettings .type__item__content__item__increase {
             border: 1px solid #ddd;
@@ -902,6 +872,7 @@
             -webkit-user-select: none;
                 -ms-user-select: none;
                     user-select: none;
+            font-size: 14px;
             background: white; }
           #typeSettings .type__item__content__item__colour {
             border: 2px solid white;
@@ -998,7 +969,7 @@ Page loader
     height: 6px;
     background-color: white;
     border: 0;
-    border-radius: 100rem;
+    border-radius: 1000px;
     margin: 0 1px;
     -webkit-animation-name: wave2;
             animation-name: wave2;
@@ -1029,7 +1000,7 @@ Page loader
     margin: 0 auto;
     left: 0;
     right: 0;
-    top: 1.3rem; }
+    top: 13px; }
     .type__button__loader__shadows__shadow {
       display: inline-block;
       text-align: center;

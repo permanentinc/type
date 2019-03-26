@@ -29,6 +29,15 @@ let $typeSelect = $('.js-type-select, .js-align-select, .js-style-select');
 let $fontSelect = $('.js-font-select');
 let styles = {};
 
+const createSingleRootStyleSet = ($el) => {
+    return {
+        [':root']: {
+            '--primary-colour': $('.js-primary-colour-input').val(),
+            '--secondary-colour': $('.js-secondary-colour-input').val()
+        }
+    }
+};
+
 const createSingleStyleSet = ($el) => {
     return {
         ['#type ' + $el.attr('data-tag')]: {
@@ -46,22 +55,29 @@ const createSingleStyleSet = ($el) => {
 
 const updateInputs = (tags) => {
     forEach(tags, (value, key) => {
-        let tag = key.replace('#type ', '');
-        $(`#selector_${tag}_font-family`).val(value['font-family']).trigger('change');
-        $(`#selector_${tag}_font-weight`).val(value['font-weight']).trigger('change');
-        $(`#selector_${tag}_font-size`).val(value['font-size'].replace('px', ''));
-        $(`#selector_${tag}_font-style`).val(value['font-style']).trigger('change');
-        $(`#selector_${tag}_font-colour`).val(value['color']).trigger('change');
-        $(`#selector_${tag}_background-color`).val(value['background']).trigger('change');
-        $(`#selector_${tag}_text-align`).val(value['text-align']).trigger('change')
-        $(`#selector_${tag}_line-height`).val(value['line-height'])
+        if (key === ':root') {
+            $(`.js-primary-colour-input`).val(value['--primary-colour']).trigger('change');
+            $(`.js-secondary-colour-input`).val(value['--secondary-colour']).trigger('change');
+        } else {
+            let tag = key.replace('#type ', '');
+            $(`#selector_${tag}_font-family`).val(value['font-family']).trigger('change');
+            $(`#selector_${tag}_font-weight`).val(value['font-weight']).trigger('change');
+            $(`#selector_${tag}_font-size`).val(value['font-size'].replace('px', ''));
+            $(`#selector_${tag}_font-style`).val(value['font-style']).trigger('change');
+            $(`#selector_${tag}_font-colour`).val(value['color']).trigger('change');
+            $(`#selector_${tag}_background-color`).val(value['background']).trigger('change');
+            $(`#selector_${tag}_text-align`).val(value['text-align']).trigger('change');
+            $(`#selector_${tag}_line-height`).val(value['line-height']);
+        }
     });
+    createStyles();
 };
 
 const createStyles = () => {
     $('.js-type-item').each(function () {
         assign(styles, createSingleStyleSet($(this)));
     });
+    assign(styles, createSingleRootStyleSet());
     $('#typeStyles').html(Css.of(styles));
 };
 
@@ -98,10 +114,10 @@ const loadFonts = (fontsToLoad = []) => {
 $typeSelect.each(function () {
     let $this = $(this);
 
-    $this.select2({ width: '100%', minimumResultsForSearch: 20, placeholder: 'Select one...', dropdownParent: $('#typeSettings')});
+    $this.select2({ width: '100%', minimumResultsForSearch: 20, dropdownParent: $('#typeSettings') });
 
     $this.on('select2:open', () => {
-        setTimeout(() => $('.select2-dropdown').addClass('animating'), 10); 
+        setTimeout(() => $('.select2-dropdown').addClass('animating'), 10);
         setTimeout(() => $('.select2-dropdown').addClass('animated'), 250);
     });
 
@@ -114,7 +130,7 @@ $typeSelect.each(function () {
 $fontSelect.each(function () {
     let $this = $(this);
 
-    $this.select2({ width: '100%', minimumResultsForSearch: 20, placeholder: 'Select one...', dropdownParent: $('#typeSettings')});
+    $this.select2({ width: '100%', minimumResultsForSearch: 20, dropdownParent: $('#typeSettings') });
 
     $this.on('select2:open', () => {
         setTimeout(() => $('.select2-dropdown').addClass('animating'), 10);
@@ -192,6 +208,7 @@ const toggleTypeSidebar = () => {
     $('body').toggleClass('typeSettingsOpen');
 };
 
-$('.js-toggle-type-settings').on('click', function () {
+$('.js-toggle-type-settings').on('click', function (e) {
+    e.preventDefault();
     toggleTypeSidebar();
 });

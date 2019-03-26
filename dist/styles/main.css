@@ -668,7 +668,7 @@
         color: #fff !important; }
 
 .typeSettingsOpen #type {
-  padding-left: 20rem; }
+  padding-left: 300px; }
 
 .typeSettingsOpen #typeSettings {
   -webkit-transform: translateX(0);
@@ -715,7 +715,7 @@
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 20rem;
+    width: 300px;
     top: 0;
     z-index: 999;
     background: #fff;
@@ -730,7 +730,6 @@
           align-content: flex-start;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-      overflow: auto;
       position: fixed;
       top: 40px;
       bottom: 0; }
@@ -790,6 +789,7 @@
             left: 0;
             right: 0;
             top: 0;
+            margin: 0 !important;
             bottom: 0; }
     #typeSettings .type__header {
       padding: 15px 10px; }
@@ -813,6 +813,7 @@
         color: #377cff;
         padding: 5px 10px;
         cursor: pointer;
+        margin: 0 !important;
         position: relative; }
         #typeSettings .type__item__heading:after {
           position: absolute;
@@ -884,7 +885,8 @@
             -webkit-user-select: none;
                 -ms-user-select: none;
                     user-select: none;
-            background: white; }
+            background: white;
+            margin: 0 !important; }
           #typeSettings .type__item__content__item__increase {
             border: 1px solid #ddd;
             position: absolute;
@@ -919,7 +921,8 @@
               left: 0;
               right: 0;
               top: 0;
-              bottom: 0; }
+              bottom: 0;
+              margin: 0; }
           #typeSettings .type__item__content__item--select label {
             position: absolute;
             font-size: 8px;
@@ -958,12 +961,16 @@
             transition: all 111ms ease;
             line-height: 17px !important; }
     #typeSettings .type__button {
+      border: 0;
+      font-weight: bold !important;
+      color: white;
       border-radius: 0;
       background: #377cff;
       float: right;
-      margin: 1rem 0.5rem;
+      margin: 20px 5px;
       padding: 10px 30px;
       outline: 0;
+      cursor: pointer;
       margin-right: 10px;
       margin-left: auto;
       position: relative;
@@ -1085,7 +1092,7 @@ Page loader
   opacity: 1; }
 
 .typeBusy .type__button {
-  color: #377cff; }
+  color: #377cff !important; }
 
 
 /*# sourceMappingURL=../type/type.map.js*/

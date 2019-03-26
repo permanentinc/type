@@ -98,10 +98,10 @@ const loadFonts = (fontsToLoad = []) => {
 $typeSelect.each(function () {
     let $this = $(this);
 
-    $this.select2({ width: '100%', minimumResultsForSearch: 20, placeholder: 'Select one...' });
+    $this.select2({ width: '100%', minimumResultsForSearch: 20, placeholder: 'Select one...', dropdownParent: $('#typeSettings')});
 
     $this.on('select2:open', () => {
-        setTimeout(() => $('.select2-dropdown').addClass('animating'), 10);
+        setTimeout(() => $('.select2-dropdown').addClass('animating'), 10); 
         setTimeout(() => $('.select2-dropdown').addClass('animated'), 250);
     });
 
@@ -114,7 +114,7 @@ $typeSelect.each(function () {
 $fontSelect.each(function () {
     let $this = $(this);
 
-    $this.select2({ width: '100%', minimumResultsForSearch: 20, placeholder: 'Select one...' });
+    $this.select2({ width: '100%', minimumResultsForSearch: 20, placeholder: 'Select one...', dropdownParent: $('#typeSettings')});
 
     $this.on('select2:open', () => {
         setTimeout(() => $('.select2-dropdown').addClass('animating'), 10);

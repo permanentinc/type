@@ -220,7 +220,8 @@ $typeSelect.each(function () {
   $this.select2({
     width: '100%',
     minimumResultsForSearch: 20,
-    placeholder: 'Select one...'
+    placeholder: 'Select one...',
+    dropdownParent: jquery__WEBPACK_IMPORTED_MODULE_0___default()('#typeSettings')
   });
   $this.on('select2:open', function () {
     setTimeout(function () {
@@ -242,7 +243,8 @@ $fontSelect.each(function () {
   $this.select2({
     width: '100%',
     minimumResultsForSearch: 20,
-    placeholder: 'Select one...'
+    placeholder: 'Select one...',
+    dropdownParent: jquery__WEBPACK_IMPORTED_MODULE_0___default()('#typeSettings')
   });
   $this.on('select2:open', function () {
     setTimeout(function () {

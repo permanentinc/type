@@ -11,7 +11,8 @@ use SilverStripe\Core\Extension;
 class TypeConfigExtension extends Extension
 {
     private static $db = [
-        'typeCSS' => 'HTMLText',
-        'typeJSON' => 'HTMLText',
+        'typeCSS'   => 'HTMLText',
+        'typeJSON'  => 'HTMLText',
+        'typeFonts' => 'HTMLText',
     ];
 }

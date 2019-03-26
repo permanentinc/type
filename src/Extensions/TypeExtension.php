@@ -14,8 +14,9 @@ use SilverStripe\ORM\ArrayList;
 class TypeExtension extends Extension
 {
     private static $db = [
-        'typeCSS' => 'HTMLText',
-        'typeJSON' => 'HTMLText',
+        'typeCSS'   => 'HTMLText',
+        'typeJSON'  => 'HTMLText',
+        'typeFonts' => 'HTMLText',
     ];
 
     public function getTags()

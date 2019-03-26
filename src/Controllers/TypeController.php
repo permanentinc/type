@@ -41,6 +41,7 @@ class TypeController extends Controller
         $siteConfig = SiteConfig::current_site_config();
         $siteConfig->setField('typeCSS', serialize($request->postVar('css')));
         $siteConfig->setField('typeJSON', serialize($request->postVar('json')));
+        $siteConfig->setField('typeFonts', json_encode($request->postVar('fonts')));
         $siteConfig->write();
     }
 

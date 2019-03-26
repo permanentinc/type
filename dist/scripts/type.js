@@ -140,6 +140,7 @@ var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body');
 var $typeSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-select, .js-align-select, .js-style-select');
 var $fontSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-font-select');
 var styles = {};
+var fonts = [];
 
 var createSingleRootStyleSet = function createSingleRootStyleSet($el) {
   return _defineProperty({}, ':root', {
@@ -149,7 +150,9 @@ var createSingleRootStyleSet = function createSingleRootStyleSet($el) {
 };
 
 var createSingleStyleSet = function createSingleStyleSet($el) {
-  return _defineProperty({}, '#type ' + $el.attr('data-tag'), {
+  var tag = '#type ' + $el.attr('data-tag');
+  if (tag === 'p' || tag === '#type p') tag = 'p, b, li, strong';
+  return _defineProperty({}, tag, {
     'font-family': $el.find('.js-font-select').val(),
     'font-weight': $el.find('.js-type-select').val(),
     'font-size': $el.find('.js-font-size').val() + 'px',
@@ -168,6 +171,7 @@ var updateInputs = function updateInputs(tags) {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(".js-secondary-colour-input").val(value['--secondary-colour']).trigger('change');
     } else {
       var tag = key.replace('#type ', '');
+      if (tag.length > 5) tag = 'p';
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-family")).val(value['font-family']).trigger('change');
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-weight")).val(value['font-weight']).trigger('change');
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-size")).val(value['font-size'].replace('px', ''));
@@ -182,8 +186,10 @@ var updateInputs = function updateInputs(tags) {
 };
 
 var createStyles = function createStyles() {
+  fonts = [];
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-item').each(function () {
     Object(lodash__WEBPACK_IMPORTED_MODULE_6__["assign"])(styles, createSingleStyleSet(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)));
+    fonts.push(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('.js-font-select').val());
   });
   Object(lodash__WEBPACK_IMPORTED_MODULE_6__["assign"])(styles, createSingleRootStyleSet());
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('#typeStyles').html(json_to_css__WEBPACK_IMPORTED_MODULE_5___default.a.of(styles));
@@ -196,7 +202,8 @@ var saveStyles = function saveStyles() {
     type: 'POST',
     data: {
       'css': json_to_css__WEBPACK_IMPORTED_MODULE_5___default.a.of(styles),
-      'json': styles
+      'json': styles,
+      'fonts': fonts
     }
   }).done(function (response) {
     setTimeout(function () {

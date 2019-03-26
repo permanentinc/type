@@ -79,6 +79,7 @@ $SiteConfig.typeCSS
                                         <option value="Arvo">Arvo</option>
                                         <option value="Fjalla+One">Fjalla One</option>
                                         <option value="Anoton">Anoton</option>
+                                        <option value="Rubik">Rubik</option>
                                     </select>
                                     <label for="selector_{$Selector}_font-family">FONT FAMILY</label>
                                 </div>
@@ -192,11 +193,11 @@ $SiteConfig.typeCSS
 
         </div>
     </div>
-<% else %>
+<% end_if %>
+xxx
 
-<% if $SiteConfig.TypeSettingsJS %>
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.28/webfont.js"></script>
-    <script>WebFont.load({ google: { families: [$SiteConfig.TypeSettingsJS] } });</script>
-    <% end_if %>
+<% if $SiteConfig.typeFonts %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
+    <script>WebFont.load({ google: { families: $SiteConfig.typeFonts } });</script>
 <% end_if %>
 

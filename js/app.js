@@ -28,6 +28,7 @@ let $body = $('body');
 let $typeSelect = $('.js-type-select, .js-align-select, .js-style-select');
 let $fontSelect = $('.js-font-select');
 let styles = {};
+let fonts = [];
 
 const createSingleRootStyleSet = ($el) => {
     return {
@@ -39,8 +40,10 @@ const createSingleRootStyleSet = ($el) => {
 };
 
 const createSingleStyleSet = ($el) => {
+    let tag = '#type ' + $el.attr('data-tag')
+    if (tag === 'p' || tag === '#type p') tag = 'p, b, li, strong';
     return {
-        ['#type ' + $el.attr('data-tag')]: {
+        [tag]: {
             'font-family': $el.find('.js-font-select').val(),
             'font-weight': $el.find('.js-type-select').val(),
             'font-size': $el.find('.js-font-size').val() + 'px',
@@ -60,6 +63,7 @@ const updateInputs = (tags) => {
             $(`.js-secondary-colour-input`).val(value['--secondary-colour']).trigger('change');
         } else {
             let tag = key.replace('#type ', '');
+            if (tag.length > 5) tag = 'p';
             $(`#selector_${tag}_font-family`).val(value['font-family']).trigger('change');
             $(`#selector_${tag}_font-weight`).val(value['font-weight']).trigger('change');
             $(`#selector_${tag}_font-size`).val(value['font-size'].replace('px', ''));
@@ -74,8 +78,10 @@ const updateInputs = (tags) => {
 };
 
 const createStyles = () => {
+    fonts = [];
     $('.js-type-item').each(function () {
         assign(styles, createSingleStyleSet($(this)));
+        fonts.push($(this).find('.js-font-select').val());
     });
     assign(styles, createSingleRootStyleSet());
     $('#typeStyles').html(Css.of(styles));
@@ -86,7 +92,7 @@ const saveStyles = () => {
     $.ajax({
         url: $('.js-save-type-settings').attr('data-api'),
         type: 'POST',
-        data: { 'css': Css.of(styles), 'json': styles }
+        data: { 'css': Css.of(styles), 'json': styles, 'fonts': fonts }
     }).done(function (response) {
         setTimeout(() => $('body').removeClass('typeBusy'), 400);
     });

@@ -1,6 +1,4 @@
-<style id="typeStyles"> 
-    {$SiteConfig.typeCSS}
-</style>
+<style id="typeStyles">{$getCSS}</style>
 
 <% if $CurrentMember %>
     <% require css("vendor/permanentinc/type/dist/styles/main.css") %>

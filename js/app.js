@@ -83,7 +83,6 @@ const createStyles = () => {
         assign(styles, createSingleStyleSet($(this)));
         fonts.push($(this).find('.js-font-select').val());
     });
-    uniq(fonts);
     assign(styles, createSingleRootStyleSet());
     $('#typeStyles').html(Css.of(styles));
 };
@@ -93,7 +92,7 @@ const saveStyles = () => {
     $.ajax({
         url: $('.js-save-type-settings').attr('data-api'),
         type: 'POST',
-        data: { 'css': Css.of(styles), 'json': styles, 'fonts': uniq(fonts) }
+        data: { 'css': Css.of(styles), 'json': styles, 'fonts': fonts }
     }).done(function (response) {
         setTimeout(() => $('body').removeClass('typeBusy'), 400);
     });

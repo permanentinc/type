@@ -39,8 +39,8 @@ class TypeController extends Controller
     public function save(HTTPRequest $request)
     {
         $siteConfig = SiteConfig::current_site_config();
-        $siteConfig->setField('typeCSS', json_encode($request->postVar('css')));
-        $siteConfig->setField('typeJSON', json_encode($request->postVar('json')));
+        $siteConfig->setField('typeCSS', serialize(str_replace("\n", '', ($request->postVar('css')))));
+        $siteConfig->setField('typeJSON', serialize($request->postVar('json')));
         $siteConfig->setField('typeFonts', json_encode($request->postVar('fonts')));
         $siteConfig->write();
     }
@@ -48,6 +48,6 @@ class TypeController extends Controller
     public function load(HTTPRequest $request)
     {
         $siteConfig = SiteConfig::current_site_config();
-        return json_encode(json_decode($siteConfig->getField('typeJSON')));
+        return json_encode(unserialize($siteConfig->getField('typeJSON')));
     }
 }

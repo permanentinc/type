@@ -1,4 +1,6 @@
-<style id="typeStyles">{$getCSS}</style>
+<style id="typeStyles"> 
+$decodedTypeCSS.RAW
+</style>
 
 <% if $CurrentMember %>
     <% require css("vendor/permanentinc/type/dist/styles/main.css") %>
@@ -87,8 +89,8 @@
                                 <%---------------%>
                                 <div class="type__item__content__item type__item__content__item--select">
                                     <select id="selector_{$Selector}_font-weight" class="[ js-type-select ]">
-                                        <option value="100">100</option>
-                                        <option value="300" selected="selected" >300</option>
+                                        <option value="100" selected="selected">100</option>
+                                        <option value="300">300</option>
                                         <option value="400">400</option>
                                         <option value="500">500</option>
                                         <option value="600">600</option>
@@ -195,6 +197,6 @@
 
 <% if $SiteConfig.typeFonts %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
-    <script>WebFont.load({ google: { families: {$SiteConfig.typeFonts} } });</script>
+    <script>WebFont.load({ google: { families: $decodedFonts.RAW } });</script>
 <% end_if %>
 

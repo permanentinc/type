@@ -31,4 +31,17 @@ class TypeExtension extends Extension
             new ArrayData(['Selector' => 'p', 'Name' => 'Paragraph'])
         ]);
     }
+
+    public function decodedTypeCSS()
+    {
+        $config = SiteConfig::current_site_config();
+        return unserialize($config->typeCSS);
+    }
+   
+    public function decodedFonts()
+    {
+        $config = SiteConfig::current_site_config();
+        var_dump($config->typeFonts);
+        return $config->typeFonts;
+    }
 }

@@ -1,5 +1,5 @@
 <style id="typeStyles"> 
-$decodedTypeCSS.RAW
+    $decodedTypeCSS.RAW
 </style>
 
 <% if $CurrentMember %>
@@ -56,30 +56,7 @@ $decodedTypeCSS.RAW
                                 <%---------------%>
                                 <div class="type__item__content__item type__item__content__item--select">
                                     <select id="selector_{$Selector}_font-family" class="[ js-font-select ]">
-                                        <option value="Roboto">Roboto</option>
-                                        <option value="Open+Sans">Open Sans</option>
-                                        <option value="Lato">Lato</option>
-                                        <option value="Montserrat">Montserrat</option>
-                                        <option value="Roboto+Condensed">Roboto Condensed</option>
-                                        <option value="Source+Sans+Pro">Source Sans Pro</option>
-                                        <option value="Oswald">Oswald</option>
-                                        <option value="Raleway">Raleway</option>
-                                        <option value="Merriweather">Merriweather</option>
-                                        <option value="Roboto+Slab">Roboto Slab</option>
-                                        <option value="PT+Sans">PT Sans</option>
-                                        <option value="Noto+Sans">Noto Sans</option>
-                                        <option value="Poppins">Poppins</option>
-                                        <option value="Ubuntu">Ubuntu</option>
-                                        <option value="Open+Sans+Condensed">Open Sans Condensed</option>
-                                        <option value="Playfair+display">Playfair display</option>
-                                        <option value="Lora">Lora</option>
-                                        <option value="Nunito">Nunito</option>
-                                        <option value="Fira+Sans">Fira Sans</option>
-                                        <option value="Josefin+Sans">Josefin Sans</option>
-                                        <option value="Arvo">Arvo</option>
-                                        <option value="Fjalla+One">Fjalla One</option>
-                                        <option value="Anoton">Anoton</option>
-                                        <option value="Rubik">Rubik</option>
+                                        <% include TypeFamilies %>
                                     </select>
                                     <label for="selector_{$Selector}_font-family">FONT FAMILY</label>
                                 </div>
@@ -89,14 +66,7 @@ $decodedTypeCSS.RAW
                                 <%---------------%>
                                 <div class="type__item__content__item type__item__content__item--select">
                                     <select id="selector_{$Selector}_font-weight" class="[ js-type-select ]">
-                                        <option value="100" selected="selected">100</option>
-                                        <option value="300">300</option>
-                                        <option value="400">400</option>
-                                        <option value="500">500</option>
-                                        <option value="600">600</option>
-                                        <option value="700">700</option>
-                                        <option value="800">800</option>
-                                        <option value="900">900</option>
+                                        <% include TypeFontWeight %>
                                     </select>
                                     <label for="selector_{$Selector}_font-weight">FONT WEIGHT</label>
                                 </div>
@@ -200,3 +170,27 @@ $decodedTypeCSS.RAW
     <script>WebFont.load({ google: { families: $decodedFonts.RAW } });</script>
 <% end_if %>
 
+<script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+
+<script>
+cssVars({
+  // Targets
+  rootElement   : document,
+  shadowDOM     : false,
+
+  // Sources
+  include       : 'link[rel=stylesheet],style',
+  exclude       : '',
+  variables     : {},
+
+  // Options
+  onlyLegacy    : true,
+  preserveStatic: true,
+  preserveVars  : false,
+  silent        : false,
+  updateDOM     : true,
+  updateURLs    : true,
+  watch         : false,
+
+});
+</script>

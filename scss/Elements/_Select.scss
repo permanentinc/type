@@ -2,7 +2,7 @@
 // Defaults
 //------------------------------------------------------------------
 
-@import "./../../node_modules/select2/src/scss/core.scss";
+@import './../../node_modules/select2/src/scss/core.scss';
 
 //------------------------------------------------------------------
 // Select 2 styles
@@ -30,6 +30,13 @@
       }
     }
 
+    .select2-results__option {
+      font-size: 13px;
+      padding: 0.3rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+      font-weight: normal !important;
+    }
+
     .select2-selection {
       margin: 0;
       height: auto;
@@ -49,7 +56,7 @@
 
         &:before {
           position: absolute;
-          content: "";
+          content: '';
           transform: scaleY(0);
           width: 100%;
           height: 100%;
@@ -149,7 +156,7 @@
         color: #19191a !important;
       }
 
-      &[aria-selected="true"] {
+      &[aria-selected='true'] {
         background: #377cff !important;
         color: #fff !important;
       }

@@ -29,6 +29,7 @@ let $typeSelect = $('.js-type-select, .js-align-select, .js-style-select');
 let $fontSelect = $('.js-font-select');
 let styles = {};
 let fonts = [];
+let fontFamilies = [];
 
 const createSingleRootStyleSet = ($el) => {
     return {
@@ -95,6 +96,7 @@ const saveStyles = () => {
         data: { 'css': Css.of(styles), 'json': styles, 'fonts': fonts }
     }).done(function (response) {
         setTimeout(() => $('body').removeClass('typeBusy'), 400);
+        $(window).trigger('resize');
     });
 };
 

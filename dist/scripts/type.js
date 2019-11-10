@@ -141,6 +141,7 @@ var $typeSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-select
 var $fontSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-font-select');
 var styles = {};
 var fonts = [];
+var fontFamilies = [];
 
 var createSingleRootStyleSet = function createSingleRootStyleSet($el) {
   return _defineProperty({}, ':root', {
@@ -209,6 +210,7 @@ var saveStyles = function saveStyles() {
     setTimeout(function () {
       return jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').removeClass('typeBusy');
     }, 400);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).trigger('resize');
   });
 };
 

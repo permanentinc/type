@@ -58,11 +58,10 @@ $primary: var(--primary-colour);
     top: 0;
     z-index: 999;
     background: #fff;
-    box-shadow: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12),
-      0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1);
+    box-shadow: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12), 0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1);
 
     * {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
       font-weight: normal !important;
     }
 
@@ -138,9 +137,7 @@ $primary: var(--primary-colour);
           bottom: 18px;
           $size: 10px;
 
-          background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
-            linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%),
-            linear-gradient(135deg, transparent 75%, #ccc 75%);
+          background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(135deg, transparent 75%, #ccc 75%);
           background-size: $size / 2 $size / 2;
           background-position: 0 0, $size / 4 0, $size / 4 $size / -4, 0px $size / 4;
 
@@ -175,6 +172,7 @@ $primary: var(--primary-colour);
         color: #333;
         margin: 0;
         display: inline-block;
+        font-size: 17px;
         vertical-align: middle;
       }
     }
@@ -185,16 +183,19 @@ $primary: var(--primary-colour);
 
       &__heading {
         color: #377cff;
-        padding: 5px 10px;
+        padding: 12px 10px;
         cursor: pointer;
         margin: 0 !important;
         position: relative;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        font-weight: 500 !important;
 
         &:after {
           position: absolute;
           right: 10px;
-          top: 11px;
-          content: "";
+          top: 18px;
+          content: '';
           display: inline-block;
           border-right: 2px solid #377cff;
           border-bottom: 2px solid #377cff;
@@ -299,9 +300,7 @@ $primary: var(--primary-colour);
             height: 24px;
             bottom: 8px;
             $size: 10px;
-            background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
-              linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%),
-              linear-gradient(135deg, transparent 75%, #ccc 75%);
+            background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(135deg, transparent 75%, #ccc 75%);
             background-size: $size / 2 $size / 2;
             background-position: 0 0, $size / 4 0, $size / 4 $size / -4, 0px $size / 4;
 
@@ -378,12 +377,34 @@ $primary: var(--primary-colour);
       float: right;
       margin: 20px 5px;
       padding: 10px 30px;
+      transform-origin: bottom left;
       outline: 0;
       cursor: pointer;
       margin-right: 10px;
       margin-left: auto;
+      user-select: none;
       position: relative;
       transition: all 222ms ease;
+
+      &:before {
+        position: absolute;
+        content: '';
+        transform: scaleY(0);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: rgba(#fff, 0.1);
+        transform-origin: top left;
+        z-index: 1;
+        transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+      }
+
+      &:hover:before {
+        transform: scaleY(1);
+        transform-origin: bottom left;
+      }
     }
   }
 }

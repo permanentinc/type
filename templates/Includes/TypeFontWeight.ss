@@ -1,5 +1,5 @@
-<option value="100" selected="selected">100</option>
-<option value="300">300</option>
+<option value="100">100</option>
+<option value="300" selected="selected">300</option>
 <option value="400">400</option>
 <option value="500">500</option>
 <option value="600">600</option>

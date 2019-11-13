@@ -161,7 +161,8 @@ var createSingleStyleSet = function createSingleStyleSet($el) {
     'color': $el.find('.js-colour').val(),
     'background': $el.find('.js-background').val(),
     'text-align': $el.find('.js-align-select').val(),
-    'line-height': $el.find('.js-line-height').val()
+    'line-height': $el.find('.js-line-height').val(),
+    'margin-bottom': $el.find('.js-margin-bottom').val() + 'px'
   });
 };
 
@@ -181,6 +182,7 @@ var updateInputs = function updateInputs(tags) {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_background-color")).val(value['background']).trigger('change');
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_text-align")).val(value['text-align']).trigger('change');
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_line-height")).val(value['line-height']);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_margin-bottom")).val(value['margin-bottom'].replace('px', ''));
     }
   });
   createStyles();

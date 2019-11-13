@@ -35,7 +35,7 @@ class TypeExtension extends Extension
     public function decodedTypeCSS()
     {
         $config = SiteConfig::current_site_config();
-        return $this->wohoo(unserialize($config->typeCSS));
+        return $this->internetExplorerFallback(unserialize($config->typeCSS));
     }
 
     public function decodedFonts()
@@ -44,7 +44,7 @@ class TypeExtension extends Extension
         return json_encode(array_values(array_unique(json_decode($config->typeFonts))));
     }
 
-    function wohoo($css)
+    function internetExplorerFallback($css)
     {
         preg_match_all('/^\s*([^:]+)(:\s*(.+))?;\s*$/m', str_replace(';', ";\n", $css), $matches, PREG_SET_ORDER);
         foreach ($matches as $match) {

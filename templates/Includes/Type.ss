@@ -108,7 +108,7 @@
                                 <%--Font Background Colour--%>
                                 <%--------------------------%>
                                 <div class="type__item__content__item type__item__content__item--colour">
-                                    <input class="type__item__content__item__input [ js-background ]" value="#fffff" type="text" id="selector_{$Selector}_background-color" placeholder="#fffff">
+                                    <input class="type__item__content__item__input [ js-background ]" value="#ffffffff" type="text" id="selector_{$Selector}_background-color" placeholder="#ffffffff">
                                     <label for="selector_{$Selector}_background-color">BACKGROUND</label>
                                     <div class="type__item__content__item__colour [ js-type-colour ]">
                                         <span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]"></span>
@@ -133,6 +133,17 @@
                                 <div class="type__item__content__item type__item__content__item--number">
                                     <input type="number" id="selector_{$Selector}_line-height" class="[ js-line-height ]" placeholder="1.2" data-default="1.2" min="0" max="5" step="0.1" value="1.2">
                                     <label for="selector_{$Selector}_line-height">LINE HEIGHT</label>
+                                    <span class="type__item__content__item__increase [ js-increase-number ]">+</span>
+                                    <span class="type__item__content__item__decrease [ js-decrease-number ]">-</span>
+                                </div>
+
+                                <%-----------------%>
+                                <%--Margin Bottom--%>
+                                <%-----------------%>
+                                <div class="type__item__content__item type__item__content__item--number">
+                                    <input class="[ js-margin-bottom ]" type="number" id="selector_{$Selector}_margin-bottom" placeholder="15" data-default="15" min="-100" max="100" step="1" value="15">
+                                    <label for="selector_{$Selector}_margin-bottom">MARGIN BOTTOM</label>
+                                    <span class="type__item__content__item__unit">px</span>
                                     <span class="type__item__content__item__increase [ js-increase-number ]">+</span>
                                     <span class="type__item__content__item__decrease [ js-decrease-number ]">-</span>
                                 </div>

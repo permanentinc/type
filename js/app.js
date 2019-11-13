@@ -53,6 +53,7 @@ const createSingleStyleSet = ($el) => {
             'background': $el.find('.js-background').val(),
             'text-align': $el.find('.js-align-select').val(),
             'line-height': $el.find('.js-line-height').val(),
+            'margin-bottom': $el.find('.js-margin-bottom').val() + 'px',
         }
     }
 };
@@ -73,6 +74,7 @@ const updateInputs = (tags) => {
             $(`#selector_${tag}_background-color`).val(value['background']).trigger('change');
             $(`#selector_${tag}_text-align`).val(value['text-align']).trigger('change');
             $(`#selector_${tag}_line-height`).val(value['line-height']);
+            $(`#selector_${tag}_margin-bottom`).val(value['margin-bottom'].replace('px', ''));
         }
     });
     createStyles();
@@ -90,7 +92,7 @@ const createStyles = () => {
 
 const saveStyles = () => {
     $('body').addClass('typeBusy');
-    $.ajax({ 
+    $.ajax({
         url: $('.js-save-type-settings').attr('data-api'),
         type: 'POST',
         data: { 'css': Css.of(styles), 'json': styles, 'fonts': fonts }

@@ -25,7 +25,7 @@ Variables
 ------------------------------------------------------------------*/
 
 let $body = $('body');
-let $typeSelect = $('.js-type-select, .js-align-select, .js-style-select');
+let $typeSelect = $('.js-type-select, .js-style-select');
 let $fontSelect = $('.js-font-select');
 let styles = {};
 let fonts = [];
@@ -42,7 +42,7 @@ const createSingleRootStyleSet = ($el) => {
 
 const createSingleStyleSet = ($el) => {
     let tag = '.type ' + $el.attr('data-tag')
-    if (tag === 'p' || tag === '.type p') tag = '.type p, .type b, .type li, .type strong';
+    if (tag === 'p' || tag === '.type p') tag = '.type p, .type li';
     return {
         [tag]: {
             'font-family': $el.find('.js-font-select').val(),
@@ -50,8 +50,6 @@ const createSingleStyleSet = ($el) => {
             'font-size': $el.find('.js-font-size').val() + 'px',
             'font-style': $el.find('.js-style-select').val(),
             'color': $el.find('.js-colour').val(),
-            'background': $el.find('.js-background').val(),
-            'text-align': $el.find('.js-align-select').val(),
             'line-height': $el.find('.js-line-height').val(),
             'margin-bottom': $el.find('.js-margin-bottom').val() + 'px',
         }
@@ -71,8 +69,6 @@ const updateInputs = (tags) => {
             $(`#selector_${tag}_font-size`).val(value['font-size'].replace('px', ''));
             $(`#selector_${tag}_font-style`).val(value['font-style']).trigger('change');
             $(`#selector_${tag}_font-colour`).val(value['color']).trigger('change');
-            $(`#selector_${tag}_background-color`).val(value['background']).trigger('change');
-            $(`#selector_${tag}_text-align`).val(value['text-align']).trigger('change');
             $(`#selector_${tag}_line-height`).val(value['line-height']);
             $(`#selector_${tag}_margin-bottom`).val(value['margin-bottom'].replace('px', ''));
         }
@@ -205,8 +201,6 @@ $('.js-slide-toggle').on('click', function () {
 
 $('.js-type-select').on('change', () => createStyles());
 $('.js-font-select').on('change', () => createStyles());
-$('.js-background').on('change', () => createStyles());
-$('.js-align-select').on('change', () => createStyles());
 $('.js-style-select').on('change', () => createStyles());
 
 $('.js-save-type-settings').on('click', function () {

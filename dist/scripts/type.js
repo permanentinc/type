@@ -137,7 +137,7 @@ Variables
 ------------------------------------------------------------------*/
 
 var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body');
-var $typeSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-select, .js-align-select, .js-style-select');
+var $typeSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-select, .js-style-select');
 var $fontSelect = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-font-select');
 var styles = {};
 var fonts = [];
@@ -152,15 +152,13 @@ var createSingleRootStyleSet = function createSingleRootStyleSet($el) {
 
 var createSingleStyleSet = function createSingleStyleSet($el) {
   var tag = '.type ' + $el.attr('data-tag');
-  if (tag === 'p' || tag === '.type p') tag = '.type p, .type b, .type li, .type strong';
+  if (tag === 'p' || tag === '.type p') tag = '.type p, .type li';
   return _defineProperty({}, tag, {
     'font-family': $el.find('.js-font-select').val(),
     'font-weight': $el.find('.js-type-select').val(),
     'font-size': $el.find('.js-font-size').val() + 'px',
     'font-style': $el.find('.js-style-select').val(),
     'color': $el.find('.js-colour').val(),
-    'background': $el.find('.js-background').val(),
-    'text-align': $el.find('.js-align-select').val(),
     'line-height': $el.find('.js-line-height').val(),
     'margin-bottom': $el.find('.js-margin-bottom').val() + 'px'
   });
@@ -179,8 +177,6 @@ var updateInputs = function updateInputs(tags) {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-size")).val(value['font-size'].replace('px', ''));
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-style")).val(value['font-style']).trigger('change');
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-colour")).val(value['color']).trigger('change');
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_background-color")).val(value['background']).trigger('change');
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_text-align")).val(value['text-align']).trigger('change');
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_line-height")).val(value['line-height']);
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_margin-bottom")).val(value['margin-bottom'].replace('px', ''));
     }
@@ -339,12 +335,6 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-select').on('change', fu
   return createStyles();
 });
 jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-font-select').on('change', function () {
-  return createStyles();
-});
-jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-background').on('change', function () {
-  return createStyles();
-});
-jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-align-select').on('change', function () {
   return createStyles();
 });
 jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-style-select').on('change', function () {

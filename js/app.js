@@ -42,7 +42,7 @@ const createSingleRootStyleSet = ($el) => {
 
 const createSingleStyleSet = ($el) => {
     let tag = '.type ' + $el.attr('data-tag')
-    if (tag === 'p' || tag === '.type p') tag = 'p, b, li, strong';
+    if (tag === 'p' || tag === '.type p') tag = '.type p, .type b, .type li, .type strong';
     return {
         [tag]: {
             'font-family': $el.find('.js-font-select').val(),

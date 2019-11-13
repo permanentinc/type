@@ -35,7 +35,6 @@ class TypeExtension extends Extension
     public function decodedTypeCSS()
     {
         $config = SiteConfig::current_site_config();
-        // return unserialize($config->typeCSS);
         return $this->wohoo(unserialize($config->typeCSS));
     }
 

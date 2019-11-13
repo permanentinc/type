@@ -151,8 +151,8 @@ var createSingleRootStyleSet = function createSingleRootStyleSet($el) {
 };
 
 var createSingleStyleSet = function createSingleStyleSet($el) {
-  var tag = '#type ' + $el.attr('data-tag');
-  if (tag === 'p' || tag === '#type p') tag = 'p, b, li, strong';
+  var tag = '.type ' + $el.attr('data-tag');
+  if (tag === 'p' || tag === '.type p') tag = 'p, b, li, strong';
   return _defineProperty({}, tag, {
     'font-family': $el.find('.js-font-select').val(),
     'font-weight': $el.find('.js-type-select').val(),
@@ -171,7 +171,7 @@ var updateInputs = function updateInputs(tags) {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(".js-primary-colour-input").val(value['--primary-colour']).trigger('change');
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(".js-secondary-colour-input").val(value['--secondary-colour']).trigger('change');
     } else {
-      var tag = key.replace('#type ', '');
+      var tag = key.replace('.type ', '');
       if (tag.length > 5) tag = 'p';
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-family")).val(value['font-family']).trigger('change');
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#selector_".concat(tag, "_font-weight")).val(value['font-weight']).trigger('change');

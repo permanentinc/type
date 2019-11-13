@@ -41,8 +41,8 @@ const createSingleRootStyleSet = ($el) => {
 };
 
 const createSingleStyleSet = ($el) => {
-    let tag = '#type ' + $el.attr('data-tag')
-    if (tag === 'p' || tag === '#type p') tag = 'p, b, li, strong';
+    let tag = '.type ' + $el.attr('data-tag')
+    if (tag === 'p' || tag === '.type p') tag = 'p, b, li, strong';
     return {
         [tag]: {
             'font-family': $el.find('.js-font-select').val(),
@@ -63,7 +63,7 @@ const updateInputs = (tags) => {
             $(`.js-primary-colour-input`).val(value['--primary-colour']).trigger('change');
             $(`.js-secondary-colour-input`).val(value['--secondary-colour']).trigger('change');
         } else {
-            let tag = key.replace('#type ', '');
+            let tag = key.replace('.type ', '');
             if (tag.length > 5) tag = 'p';
             $(`#selector_${tag}_font-family`).val(value['font-family']).trigger('change');
             $(`#selector_${tag}_font-weight`).val(value['font-weight']).trigger('change');
@@ -90,7 +90,7 @@ const createStyles = () => {
 
 const saveStyles = () => {
     $('body').addClass('typeBusy');
-    $.ajax({
+    $.ajax({ 
         url: $('.js-save-type-settings').attr('data-api'),
         type: 'POST',
         data: { 'css': Css.of(styles), 'json': styles, 'fonts': fonts }

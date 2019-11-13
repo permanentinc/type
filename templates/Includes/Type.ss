@@ -108,7 +108,7 @@
                                 <%--Font Background Colour--%>
                                 <%--------------------------%>
                                 <div class="type__item__content__item type__item__content__item--colour">
-                                    <input class="type__item__content__item__input [ js-background ]" value="#ffffffff" type="text" id="selector_{$Selector}_background-color" placeholder="#ffffffff">
+                                    <input class="type__item__content__item__input [ js-background ]" value="#ffffff00" type="text" id="selector_{$Selector}_background-color" placeholder="#ffffff00">
                                     <label for="selector_{$Selector}_background-color">BACKGROUND</label>
                                     <div class="type__item__content__item__colour [ js-type-colour ]">
                                         <span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]"></span>

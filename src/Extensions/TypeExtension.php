@@ -60,6 +60,9 @@ class TypeExtension extends Extension
                 }
             }
         }
+
+
+        $css = preg_replace('/[\s\+]/', ' ', $css);
         return $css;
     }
 }

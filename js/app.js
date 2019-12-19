@@ -151,14 +151,18 @@ $fontSelect.each(function () {
 
 $('.js-type-colour').each(function () {
     let $this = $(this);
+
+
     let picker = new Picker({
         parent: $this[0],
         color: '#111111',
+        alpha: !$this.hasClass('no-alpha'),
         editorFormat: 'hex',
         onChange(color) {
             let rgba = color._rgba;
             if (rgba) {
                 var hex = rgbaToHex(rgba[0], rgba[1], rgba[2], rgba[3]);
+                if ($this.hasClass('no-alpha')) hex = rgbaToHex(rgba[0], rgba[1], rgba[2]);
                 $this.find('.js-type-colour-swatch').css({ 'background': `${hex}` })
                 $this.parent().find('input').val(`${hex}`);
                 createStyles();

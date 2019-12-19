@@ -285,12 +285,14 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-type-colour').each(function (
   var picker = new vanilla_picker__WEBPACK_IMPORTED_MODULE_2__["default"]({
     parent: $this[0],
     color: '#111111',
+    alpha: !$this.hasClass('no-alpha'),
     editorFormat: 'hex',
     onChange: function onChange(color) {
       var rgba = color._rgba;
 
       if (rgba) {
         var hex = rgbaToHex(rgba[0], rgba[1], rgba[2], rgba[3]);
+        if ($this.hasClass('no-alpha')) hex = rgbaToHex(rgba[0], rgba[1], rgba[2]);
         $this.find('.js-type-colour-swatch').css({
           'background': "".concat(hex)
         });

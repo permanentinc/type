@@ -38,10 +38,15 @@ class TypeExtension extends Extension
         return $this->internetExplorerFallback(unserialize($config->typeCSS));
     }
 
+    public function appendSizeVariants($sValue)
+    {
+        return  $sValue . ':100,300,400,500,600,700,800,900';
+    }
+
     public function decodedFonts()
     {
         $config = SiteConfig::current_site_config();
-        return json_encode(array_values(array_unique(json_decode($config->typeFonts))));
+        return json_encode(array_map(array($this, 'appendSizeVariants'), array_values(array_unique(json_decode($config->typeFonts)))));
     }
 
     function internetExplorerFallback($css)

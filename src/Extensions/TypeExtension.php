@@ -35,7 +35,7 @@ class TypeExtension extends Extension
     public function decodedTypeCSS()
     {
         $config = SiteConfig::current_site_config();
-        return $this->internetExplorerFallback(unserialize($config->typeCSS));
+        return $this->internetExplorerFallback(@unserialize($config->typeCSS));
     }
 
     public function appendSizeVariants($sValue)

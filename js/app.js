@@ -1,4 +1,4 @@
-console.log('%cType 0.1', 'padding:5px;color: #fff; background: #377cff;');
+console.log('%cType 0.2', 'padding:5px;color: #fff; background: #377cff;');
 
 /*------------------------------------------------------------------
 Dependencies
@@ -42,16 +42,17 @@ const createSingleRootStyleSet = ($el) => {
 
 const createSingleStyleSet = ($el) => {
     let tag = '.type ' + $el.attr('data-tag')
-    if (tag === 'p' || tag === '.type p') tag = '.type, .type li, .type p, .notyf, .type label';
+    if (tag === 'p' || tag === '.type p') tag = '.type, .type li, .type p, .notyf, .type label, .type input';
+    if (tag === 'nav' || tag === '.type nav') tag = '.type .nav, .type nav';
     return {
         [tag]: {
-            'font-family': $el.find('.js-font-select').val(), 
+            'font-family': $el.find('.js-font-select').val(),
             'font-weight': $el.find('.js-type-select').val(),
             'font-size': $el.find('.js-font-size').val() + 'px',
             'font-style': $el.find('.js-style-select').val(),
             'color': $el.find('.js-colour').val(),
             'line-height': $el.find('.js-line-height').val(),
-            'margin-bottom': $el.find('.js-margin-bottom').val() + 'px', 
+            'margin-bottom': $el.find('.js-margin-bottom').val() + 'px',
         }
     }
 };
@@ -63,6 +64,7 @@ const updateInputs = (tags) => {
             $(`.js-secondary-colour-input`).val(value['--secondary-colour']).trigger('change');
         } else {
             let tag = key.replace('.type ', '');
+            if (tag.length > 5 && tag.length < 16) tag = 'nav';
             if (tag.length > 5) tag = 'p';
             $(`#selector_${tag}_font-family`).val(value['font-family']).trigger('change');
             $(`#selector_${tag}_font-weight`).val(value['font-weight']).trigger('change');

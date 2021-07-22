@@ -1,4 +1,4 @@
-<style id="typeStyles">$decodedTypeCSS.RAW</style>
+<style id="typeStyles">{$decodedTypeCSS.RAW}</style>
 
 <% if $CurrentMember %>
     <% require css("vendor/permanentinc/type/dist/styles/main.css") %>
@@ -58,9 +58,7 @@
                     data-selector="{$Selector}" <% if $Selector = 'p' %> style="display:block;" <% end_if %>>
                     <div class="flex">
 
-                        <%---------------%>
                         <%--Font Family--%>
-                        <%---------------%>
                         <div class="type__item__content__item type__item__content__item--select">
                             <select id="selector_{$Selector}_font-family" class="[ js-font-select ]">
                                 <% include TypeFamilies %>
@@ -68,9 +66,7 @@
                             <label for="selector_{$Selector}_font-family">FONT FAMILY</label>
                         </div>
 
-                        <%---------------%>
                         <%--Font Weight--%>
-                        <%---------------%>
                         <div class="type__item__content__item type__item__content__item--select">
                             <select id="selector_{$Selector}_font-weight" class="[ js-type-select ]">
                                 <% include TypeFontWeight %>
@@ -78,9 +74,7 @@
                             <label for="selector_{$Selector}_font-weight">FONT WEIGHT</label>
                         </div>
 
-                        <%-------------%>
                         <%--Font Size--%>
-                        <%-------------%>
                         <div class="type__item__content__item type__item__content__item--number">
                             <input class="[ js-font-size ]" type="number" id="selector_{$Selector}_font-size"
                                 placeholder="45" data-default="45" min="0" max="100" step="1" value="16">
@@ -90,9 +84,7 @@
                             <span class="type__item__content__item__decrease [ js-decrease-number ]">-</span>
                         </div>
 
-                        <%--------------%>
                         <%--Font Style--%>
-                        <%--------------%>
                         <div class="type__item__content__item type__item__content__item--select">
                             <select id="selector_{$Selector}_font-style" class="[ js-style-select ]">
                                 <option value="normal" selected="selected">Normal</option>
@@ -101,48 +93,18 @@
                             <label for="selector_{$Selector}_font-style">FONT STYLE</label>
                         </div>
 
-                        <%---------------%>
                         <%--Font Colour--%>
-                        <%---------------%>
                         <div class="type__item__content__item type__item__content__item--colour">
                             <label for="selector_{$Selector}_fontcolour">FONT COLOUR</label>
                             <input class="type__item__content__item__input [ js-colour ]" value="#333" type="text"
                                 id="selector_{$Selector}_font-colour" placeholder="#333">
-                            <div class="type__item__content__item__colour [ js-type-colour ]">
+                            <div class="type__item__content__item__colour [ js-type-colour ][ no-alpha ]">
                                 <span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]"
                                     style="background:#333;"></span>
                             </div>
                         </div>
 
-                        <%--------------------------%>
-                        <%--Font Background Colour--%>
-                        <%--------------------------%>
-                        <%--
-                                <div class="type__item__content__item type__item__content__item--colour">
-                                    <input class="type__item__content__item__input [ js-background ]" value="#ffffff00" type="text" id="selector_{$Selector}_background-color" placeholder="#ffffff00">
-                                    <label for="selector_{$Selector}_background-color">BACKGROUND</label>
-                                    <div class="type__item__content__item__colour [ js-type-colour ]">
-                                        <span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]"></span>
-                                    </div>
-                                </div>
-                                --%>
-
-                        <%--------------%>
-                        <%--Font Align--%>
-                        <%--------------%>
-                        <%--
-                                <div class="type__item__content__item type__item__content__item--select">
-                                    <select id="selector_{$Selector}_text-align" class="[ js-align-select ]">
-                                        <option value="left" selected="selected">Left</option>
-                                        <option value="center">Center</option>
-                                        <option value="right">Right</option>
-                                    </select>
-                                    <label for="selector_{$Selector}_text-align">TEXT ALIGN</label>
-                                </div>
-                                --%>
-                        <%---------------%>
                         <%--Line Height--%>
-                        <%---------------%>
                         <div class="type__item__content__item type__item__content__item--number">
                             <input type="number" id="selector_{$Selector}_line-height" class="[ js-line-height ]"
                                 placeholder="1.2" data-default="1.2" min="0" max="5" step="0.1" value="1.2">
@@ -151,9 +113,7 @@
                             <span class="type__item__content__item__decrease [ js-decrease-number ]">-</span>
                         </div>
 
-                        <%-----------------%>
                         <%--Margin Bottom--%>
-                        <%-----------------%>
                         <div class="type__item__content__item type__item__content__item--number">
                             <input class="[ js-margin-bottom ]" type="number" id="selector_{$Selector}_margin-bottom"
                                 placeholder="15" data-default="15" min="-100" max="100" step="1" value="15">
@@ -216,5 +176,7 @@
     });
 });
 </script>
+
+
 
 

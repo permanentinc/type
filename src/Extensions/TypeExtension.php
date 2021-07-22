@@ -28,7 +28,8 @@ class TypeExtension extends Extension
             new ArrayData(['Selector' => 'h4', 'Name' => 'Heading 4']),
             new ArrayData(['Selector' => 'h5', 'Name' => 'Heading 5']),
             new ArrayData(['Selector' => 'h6', 'Name' => 'Heading 6']),
-            new ArrayData(['Selector' => 'p', 'Name' => 'Paragraph'])
+            new ArrayData(['Selector' => 'p', 'Name' => 'Paragraph']),
+            new ArrayData(['Selector' => 'nav', 'Name' => 'Navigation'])
         ]);
     }
 

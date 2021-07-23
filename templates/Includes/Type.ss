@@ -48,7 +48,7 @@
             </div>
 
 
-            <% loop $getTags %>
+            <% loop $getTypeTags %>
 
             <div class="type__item [ js-type-item ]" data-tag="{$Selector}">
 

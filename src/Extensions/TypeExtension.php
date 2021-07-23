@@ -19,7 +19,7 @@ class TypeExtension extends Extension
         'typeFonts' => 'HTMLText',
     ];
 
-    public function getTags()
+    public function getTypeTags()
     {
         return  new ArrayList([
             new ArrayData(['Selector' => 'h1', 'Name' => 'Heading 1']),

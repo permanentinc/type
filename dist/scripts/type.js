@@ -152,7 +152,7 @@ var createSingleRootStyleSet = function createSingleRootStyleSet($el) {
 
 var createSingleStyleSet = function createSingleStyleSet($el) {
   var tag = '.type ' + $el.attr('data-tag');
-  if (tag === 'p' || tag === '.type p') tag = '.type, .type li, .type p, .notyf, .type label, .type input';
+  if (tag === 'p' || tag === '.type p') tag = '.type, .type li, .type p, .notyf, .type label, .type input, .type select';
   if (tag === 'nav' || tag === '.type nav') tag = '.type .nav, .type nav';
   return _defineProperty({}, tag, {
     'font-family': $el.find('.js-font-select').val(),

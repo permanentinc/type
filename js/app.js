@@ -42,7 +42,7 @@ const createSingleRootStyleSet = ($el) => {
 
 const createSingleStyleSet = ($el) => {
     let tag = '.type ' + $el.attr('data-tag')
-    if (tag === 'p' || tag === '.type p') tag = '.type, .type li, .type p, .notyf, .type label, .type input';
+    if (tag === 'p' || tag === '.type p') tag = '.type, .type li, .type p, .notyf, .type label, .type input, .type select';
     if (tag === 'nav' || tag === '.type nav') tag = '.type .nav, .type nav';
     return {
         [tag]: {

@@ -9,6 +9,7 @@ use SilverStripe\SiteConfig\SiteConfig;
 
 class TypeController extends Controller
 {
+
     private static $allowed_actions = [
         'save',
         'load'

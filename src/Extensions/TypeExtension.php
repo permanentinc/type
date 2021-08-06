@@ -33,6 +33,14 @@ class TypeExtension extends Extension
         ]);
     }
 
+    public function isIE()
+    {
+        if (isset($_SERVER['HTTP_USER_AGENT']) && ((strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false) || (strpos($_SERVER['HTTP_USER_AGENT'], 'Trident/7.0; rv:11.0') !== false))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function decodedTypeCSS()
     {
         $config = SiteConfig::current_site_config();

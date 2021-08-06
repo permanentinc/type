@@ -156,10 +156,11 @@
 <script>WebFont.load({ google: { families: $decodedFonts.RAW } });</script>
 <% end_if %>
 
+<% if $isIE %>
+    
 <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
 
-<script crossorigin="anonymous"
-    src="https://polyfill.io/v3/polyfill.min.js?features=Object.fromEntries%2CArray.from%2CArray.prototype.includes%2CString.prototype.includes%2CArray.prototype.forEach%2CNodeList.prototype.forEach"></script>
+<script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Object.fromEntries%2CArray.from%2CArray.prototype.includes%2CString.prototype.includes%2CArray.prototype.forEach%2CNodeList.prototype.forEach"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -171,12 +172,7 @@
         updateDOM: true,
         updateURLs: true,
         watch: false,
-        onComplete: function (cssText, styleElms, cssVariables, benchmark) {
-        }
+        });
     });
-});
 </script>
-
-
-
-
+<% end_if %>

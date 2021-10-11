@@ -49,7 +49,7 @@ class TypeExtension extends Extension
 
     public function appendSizeVariants($sValue)
     {
-        return  $sValue . ':100,300,400,500,600,700,800,900&display=swap';
+        return  $sValue . ':100,300,400,500,600,700,800,900';
     }
 
     public function decodedFonts()

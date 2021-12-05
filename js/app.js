@@ -42,12 +42,12 @@ const createSingleRootStyleSet = ($el) => {
 
 const createSingleStyleSet = ($el) => {
     let tag = '.type ' + $el.attr('data-tag')
-    if (tag === 'p' || tag === '.type p') tag = '.type, .type li, .type p, .notyf, .type label, .type input, .type select';
+    if (tag === 'p' || tag === '.type p') tag = '.type, .type li, .type p, .notyf, .type label, .type input, .type select, .type .choices__inner';
     if (tag === 'nav' || tag === '.type nav') tag = '.type .nav, .type nav';
     return {
         [tag]: {
             'font-family': $el.find('.js-font-select').val(),
-            'font-weight': $el.find('.js-type-select').val(),
+            'font-weight': $el.find('.js-type-select').val(), 
             'font-size': $el.find('.js-font-size').val() + 'px',
             'font-style': $el.find('.js-style-select').val(),
             'color': $el.find('.js-colour').val(),

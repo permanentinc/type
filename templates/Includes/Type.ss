@@ -4,7 +4,7 @@
     <% require css("vendor/permanentinc/type/dist/styles/main.css") %>
     <% require javascript("vendor/permanentinc/type/dist/scripts/type.js") %>
 
-<div id="typeSettings" class="js-load-type-settings" data-api="{$BaseHref}type_api/load">
+<div id="typeSettings" class="js-load-type-settings" data-api="{$BaseHref}/type_api/load">
 
     <div id="typeSettings" class="type" data-save-type-settings="$Link('SaveTypeSettings')"
         data-load-type-settings="$Link('LoadTypeSettings')" data-save-css="$Link('SaveCSS')" data-save-js="$Link('SaveJS')">
@@ -131,7 +131,7 @@
 
             <% end_loop %>
 
-            <button class="type__button js-save-type-settings" data-api="{$BaseHref}type_api/save">
+            <button class="type__button js-save-type-settings" data-api="{$BaseHref}/type_api/save">
                 <span>SAVE</span>
                 <div class="type__button__loader">
                     <span class="type__button__loader__dot"></span>

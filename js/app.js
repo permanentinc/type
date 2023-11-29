@@ -1,4 +1,4 @@
-console.log('%cType 0.2', 'padding:5px;color: #fff; background: #377cff;');
+console.log('%cType 0.3', 'padding:5px;color: #fff; background: #3163ec;');
 
 /*------------------------------------------------------------------
 Dependencies
@@ -6,13 +6,12 @@ Dependencies
 
 import $ from 'jquery';
 import select2 from 'select2';
-import Picker from 'vanilla-picker';
-let rgbaToHex = require('hex-and-rgba').rgbaToHex;
-
-import isHexcolor from 'is-hexcolor';
+import rgbHex from 'rgb-hex';
 import WebFont from 'webfontloader';
 import Css from 'json-to-css';
 import { uniq, forEach, assign } from 'lodash';
+
+import Coloris from "@melloware/coloris";
 
 /*------------------------------------------------------------------
 Stylesheets
@@ -24,12 +23,10 @@ import './../scss/style.scss';
 Variables
 ------------------------------------------------------------------*/
 
-let $body = $('body');
 let $typeSelect = $('.js-type-select, .js-style-select');
 let $fontSelect = $('.js-font-select');
 let styles = {};
 let fonts = [];
-let fontFamilies = [];
 
 const createSingleRootStyleSet = ($el) => {
     return {
@@ -42,12 +39,12 @@ const createSingleRootStyleSet = ($el) => {
 
 const createSingleStyleSet = ($el) => {
     let tag = '.type ' + $el.attr('data-tag')
-    if (tag === 'p' || tag === '.type p') tag = '.type, .type li, .type p, .notyf, .type label, .type input, .type select, .type .choices__inner';
+    if (tag === 'p' || tag === '.type p') tag = '.type, .type li, .type p, .notyf, .type label, .type input, .type textarea, .type select, .type .choices__inner';
     if (tag === 'nav' || tag === '.type nav') tag = '.type .nav, .type nav';
     return {
         [tag]: {
             'font-family': $el.find('.js-font-select').val(),
-            'font-weight': $el.find('.js-type-select').val(), 
+            'font-weight': $el.find('.js-type-select').val(),
             'font-size': $el.find('.js-font-size').val() + 'px',
             'font-style': $el.find('.js-style-select').val(),
             'color': $el.find('.js-colour').val(),
@@ -151,36 +148,51 @@ $fontSelect.each(function () {
 
 });
 
+
+
 $('.js-type-colour').each(function () {
     let $this = $(this);
-
-
-    let picker = new Picker({
-        parent: $this[0],
-        color: '#111111',
-        alpha: !$this.hasClass('no-alpha'),
-        editorFormat: 'hex',
-        onChange(color) {
-            let rgba = color._rgba;
-            if (rgba) {
-                var hex = rgbaToHex(rgba[0], rgba[1], rgba[2], rgba[3]);
-                if ($this.hasClass('no-alpha')) hex = rgbaToHex(rgba[0], rgba[1], rgba[2]);
-                $this.find('.js-type-colour-swatch').css({ 'background': `${hex}` })
-                $this.parent().find('input').val(`${hex}`);
-                createStyles();
-            }
-        }
+    $this.on('click', function () {
     });
+
+    // let picker = new Picker({
+    //     parent: $this[0],
+    //     popup: 'top',
+    //     color: '#111111',
+    //     alpha: !$this.hasClass('no-alpha'),
+    //     editorFormat: 'hex',
+    //     onDone(color) {
+    //         let rgba = color._rgba;
+    //         if (rgba) {
+    //             var hex = rgbHex(rgba[0], rgba[1], rgba[2], rgba[3]);
+    //             if ($this.hasClass('no-alpha')) hex = rgbHex(rgba[0], rgba[1], rgba[2]);
+    //             $this.find('.js-type-colour-swatch').css({ 'background': `${hex}` })
+    //             $this.parent().find('input').val(`${hex}`);
+    //             createStyles();
+    //         }
+    //     }
+    // });
 
     $this.parent().find('.type__item__content__item__input').on('keyup change', function () {
         let val = $(this).val();
         if (val.length > 6 && val !== 'transparent') {
-            picker.setColour(val)
+            // picker.setColour(val)
             $this.find('.js-type-colour-swatch').css({ 'background': val })
         }
     });
 
 });
+
+
+$('body').on('change', '.js-type-colour-swatch', (e) => {
+    e.preventDefault();
+    let $this = $(e.currentTarget);
+    let val = $this.val();
+    if (val.length > 6 && val !== 'transparent') {
+        $this.find('.js-type-colour-swatch').css({ 'background': val })
+    }
+});
+
 
 $('.js-increase-number').on('click', function () {
     let $this = $(this);
@@ -210,6 +222,8 @@ $('.js-font-select').on('change', () => createStyles());
 $('.js-style-select').on('change', () => createStyles());
 
 $('.js-save-type-settings').on('click', function () {
+    console.log('save settings')
+
     createStyles();
     saveStyles();
 });

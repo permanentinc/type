@@ -2,9 +2,9 @@
 
 <% if $CurrentMember %>
     <% require css("vendor/permanentinc/type/dist/styles/main.css") %>
-    <% require javascript("vendor/permanentinc/type/dist/scripts/type.js") %>
+    <% require javascript("vendor/permanentinc/type/dist/scripts/main.js") %>
 
-<div id="typeSettings" class="js-load-type-settings" data-api="{$BaseHref}type_api/load">
+<div id="typeSettings" class="js-load-type-settings" data-api="{$BaseHref}/type_api/load">
 
     <div id="typeSettings" class="type" data-save-type-settings="$Link('SaveTypeSettings')"
         data-load-type-settings="$Link('LoadTypeSettings')" data-save-css="$Link('SaveCSS')" data-save-js="$Link('SaveJS')">
@@ -28,8 +28,8 @@
                         class="type__item__content__item__input type__colour__item__input [ js-primary-colour-input ]"
                         value="#377dff" type="text" id="selector_primary_font-colour" placeholder="#333">
                     <div class="type__colour__item__colour [ js-type-colour ][ no-alpha ]">
-                        <span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]"
-                            style="background:#333;"></span>
+                                  <input type="color" class="[ js-type-colour-swatch ]" value="#333">
+
                     </div>
                 </div>
             </div>
@@ -41,8 +41,8 @@
                         class="type__item__content__item__input type__colour__item__input [ js-secondary-colour-input ]"
                         value="#377dff" type="text" id="selector_secondary_font-colour" placeholder="#333">
                     <div class="type__colour__item__colour [ js-type-colour ][ no-alpha ]">
-                        <span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]"
-                            style="background:#333;"></span>
+                                                         <input type="color" class="[ js-type-colour-swatch ]" value="#333">
+
                     </div>
                 </div>
             </div>
@@ -99,8 +99,8 @@
                             <input class="type__item__content__item__input [ js-colour ]" value="#333" type="text"
                                 id="selector_{$Selector}_font-colour" placeholder="#333">
                             <div class="type__item__content__item__colour [ js-type-colour ][ no-alpha ]">
-                                <span class="type__item__content__item__colour__swatch [ js-type-colour-swatch ]"
-                                    style="background:#333;"></span>
+                                                                                             <input type="color" class="[ js-type-colour-swatch ]" value="#333">
+
                             </div>
                         </div>
 
@@ -131,7 +131,7 @@
 
             <% end_loop %>
 
-            <button class="type__button js-save-type-settings" data-api="{$BaseHref}type_api/save">
+            <button class="type__button js-save-type-settings" data-api="{$BaseHref}/type_api/save">
                 <span>SAVE</span>
                 <div class="type__button__loader">
                     <span class="type__button__loader__dot"></span>

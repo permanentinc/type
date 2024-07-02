@@ -1,3 +1,8 @@
+/*------------------------------------------------------------------
+Imports
+------------------------------------------------------------------*/
+@use 'sass:math';
+
 //------------------------------------------------------------------
 // Type Preview
 //------------------------------------------------------------------
@@ -58,7 +63,11 @@ $primary: var(--primary-colour);
     top: 0;
     z-index: 999;
     background: #fff;
-    box-shadow: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12), 0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1);
+    box-shadow:
+      0 0.125rem 9.375rem rgba(90, 97, 105, 0.1),
+      0 0.25rem 0.5rem rgba(90, 97, 105, 0.12),
+      0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1),
+      0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1);
 
     * {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
@@ -126,11 +135,9 @@ $primary: var(--primary-colour);
         }
 
         &__colour {
-          border: 2px solid white;
           display: block;
           position: absolute;
           cursor: pointer;
-          outline: 1px solid #ddd;
           right: 18px;
           width: 26px;
           height: 26px;
@@ -138,8 +145,31 @@ $primary: var(--primary-colour);
           $size: 10px;
 
           background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(135deg, transparent 75%, #ccc 75%);
-          background-size: $size / 2 $size / 2;
-          background-position: 0 0, $size / 4 0, $size / 4 $size / -4, 0px $size / 4;
+          background-size: math.div($size, 2) math.div($size, 2);
+          background-position:
+            0 0,
+            math.div($size, 4) 0,
+            math.div($size, 4) math.div($size, -4),
+            0px math.div($size, 4);
+
+          input[type='color'] {
+            -webkit-appearance: none;
+            border: none;
+          }
+          input[type='color']::-webkit-color-swatch-wrapper {
+            padding: 0;
+          }
+          input[type='color']::-webkit-color-swatch {
+            border: none;
+          }
+
+          input {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            appearance: none;
+            border: 0;
+          }
 
           &__swatch {
             position: absolute;
@@ -148,6 +178,8 @@ $primary: var(--primary-colour);
             top: 0;
             margin: 0 !important;
             bottom: 0;
+
+            
           }
         }
       }
@@ -301,9 +333,32 @@ $primary: var(--primary-colour);
             bottom: 8px;
             $size: 10px;
             background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(135deg, transparent 75%, #ccc 75%);
-            background-size: $size / 2 $size / 2;
-            background-position: 0 0, $size / 4 0, $size / 4 $size / -4, 0px $size / 4;
+            background-size: math.div($size, 2) math.div($size, 2);
+            background-position:
+              0 0,
+              math.div($size, 4) 0,
+              math.div($size, 4) math.div($size, -4),
+              0px math.div($size, 4);
 
+              input[type='color'] {
+                -webkit-appearance: none;
+                border: none;
+              }
+              input[type='color']::-webkit-color-swatch-wrapper {
+                padding: 0;
+              }
+              input[type='color']::-webkit-color-swatch {
+                border: none;
+              }
+    
+              input {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                appearance: none;
+                border: 0;
+              }
+              
             &__swatch {
               position: absolute;
               left: 0;
@@ -311,6 +366,8 @@ $primary: var(--primary-colour);
               top: 0;
               bottom: 0;
               margin: 0;
+
+              
             }
           }
 

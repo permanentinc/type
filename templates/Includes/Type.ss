@@ -155,24 +155,3 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
 <script>WebFont.load({ google: { families: $decodedFonts.RAW } });</script>
 <% end_if %>
-
-<% if $isIE %>
-    
-<script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
-
-<script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Object.fromEntries%2CArray.from%2CArray.prototype.includes%2CString.prototype.includes%2CArray.prototype.forEach%2CNodeList.prototype.forEach"></script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    cssVars({
-        rootElement: document,
-        shadowDOM: false,
-        onlyLegacy: true,
-        silent: false,
-        updateDOM: true,
-        updateURLs: true,
-        watch: false,
-        });
-    });
-</script>
-<% end_if %>

@@ -213,5 +213,3 @@ $('.js-toggle-type-settings').on('click', function (e) {
     e.preventDefault();
     toggleTypeSidebar();
 });
-
-toggleTypeSidebar();

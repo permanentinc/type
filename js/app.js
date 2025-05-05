@@ -6,12 +6,9 @@ Dependencies
 
 import $ from 'jquery';
 import select2 from 'select2';
-import rgbHex from 'rgb-hex';
 import WebFont from 'webfontloader';
 import Css from 'json-to-css';
 import { uniq, forEach, assign } from 'lodash';
-
-import Coloris from "@melloware/coloris";
 
 /*------------------------------------------------------------------
 Stylesheets
@@ -27,6 +24,10 @@ let $typeSelect = $('.js-type-select, .js-style-select');
 let $fontSelect = $('.js-font-select');
 let styles = {};
 let fonts = [];
+
+const isHexColor = (str) => {
+    return /^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$/.test(str);
+}
 
 const createSingleRootStyleSet = ($el) => {
     return {
@@ -57,6 +58,8 @@ const createSingleStyleSet = ($el) => {
 const updateInputs = (tags) => {
     forEach(tags, (value, key) => {
         if (key === ':root') {
+            $(`.js-primary-colour-input`).parent().find('[type="color"]').val(value['--primary-colour']);
+            $(`.js-secondary-colour-input`).parent().find('[type="color"]').val(value['--secondary-colour']);
             $(`.js-primary-colour-input`).val(value['--primary-colour']).trigger('change');
             $(`.js-secondary-colour-input`).val(value['--secondary-colour']).trigger('change');
         } else {
@@ -152,48 +155,22 @@ $fontSelect.each(function () {
 
 
 
-$('.js-type-colour').each(function () {
-    let $this = $(this);
-    $this.on('click', function () {
-    });
-
-    // let picker = new Picker({
-    //     parent: $this[0],
-    //     popup: 'top',
-    //     color: '#111111',
-    //     alpha: !$this.hasClass('no-alpha'),
-    //     editorFormat: 'hex',
-    //     onDone(color) {
-    //         let rgba = color._rgba;
-    //         if (rgba) {
-    //             var hex = rgbHex(rgba[0], rgba[1], rgba[2], rgba[3]);
-    //             if ($this.hasClass('no-alpha')) hex = rgbHex(rgba[0], rgba[1], rgba[2]);
-    //             $this.find('.js-type-colour-swatch').css({ 'background': `${hex}` })
-    //             $this.parent().find('input').val(`${hex}`);
-    //             createStyles();
-    //         }
-    //     }
-    // });
-
-    $this.parent().find('.type__item__content__item__input').on('keyup change', function () {
-        let val = $(this).val();
-        if (val.length > 6 && val !== 'transparent') {
-            // picker.setColour(val)
-            $this.find('.js-type-colour-swatch').css({ 'background': val })
-        }
-    });
-
-});
-
-
-$('body').on('change', '.js-type-colour-swatch', (e) => {
+$('body').on('change', '.js-colour', (e) => { 
     e.preventDefault();
     let $this = $(e.currentTarget);
-    let val = $this.val();
-    if (val.length > 6 && val !== 'transparent') {
-        $this.find('.js-type-colour-swatch').css({ 'background': val })
+    if(isHexColor($this.val())) {
+        $this.parent().find('[type="color"]').val($this.val());
     }
 });
+
+$('body').on('change', '[type="color"]', (e) => { 
+    e.preventDefault();
+    let $this = $(e.currentTarget);
+    if(isHexColor($this.val())) {
+        $this.parent().parent().find('[type="text"]').val($this.val());
+    }
+});
+
 
 
 $('.js-increase-number').on('click', function () {
@@ -236,3 +213,5 @@ $('.js-toggle-type-settings').on('click', function (e) {
     e.preventDefault();
     toggleTypeSidebar();
 });
+
+toggleTypeSidebar();

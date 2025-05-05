@@ -85,10 +85,12 @@ const createStyles = () => {
     $('#typeStyles').html(Css.of(styles));
 };
 
+console.log('Styles');
+
 const saveStyles = () => {
     $('body').addClass('typeBusy');
     $.ajax({
-        url: $('.js-save-type-settings').attr('data-api'),
+        url: $('.js-save-type-settings').attr('data-api').replace('//type_api', '/type_api'),
         type: 'POST',
         data: { 'css': Css.of(styles), 'json': styles, 'fonts': fonts }
     }).done(function (response) {
@@ -99,7 +101,7 @@ const saveStyles = () => {
 
 const loadStyles = () => {
     $.ajax({
-        url: $('.js-load-type-settings').attr('data-api'),
+        url: $('.js-load-type-settings').attr('data-api').replace('//type_api', '/type_api'),
         type: 'GET',
         dataType: 'json'
     }).done(function (response) {
@@ -222,8 +224,6 @@ $('.js-font-select').on('change', () => createStyles());
 $('.js-style-select').on('change', () => createStyles());
 
 $('.js-save-type-settings').on('click', function () {
-    console.log('save settings')
-
     createStyles();
     saveStyles();
 });

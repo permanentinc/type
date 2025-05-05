@@ -7,20 +7,6 @@
  */
 
 /*!
- * hex-color-regex <https://github.com/regexps/hex-color-regex>
- *
- * Copyright (c) 2015 Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)
- * Released under the MIT license.
- */
-
-/*!
- * is-hexcolor <https://github.com/tunnckoCore/is-hexcolor>
- *
- * Copyright (c) 2015 Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)
- * Released under the MIT license.
- */
-
-/*!
  * jQuery JavaScript Library v3.7.1
  * https://jquery.com/
  *

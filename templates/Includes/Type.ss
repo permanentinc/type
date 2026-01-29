@@ -1,5 +1,4 @@
 <style id="typeStyles">{$decodedTypeCSS.RAW}</style>
-
 <% if $CurrentMember %>
     <% require css("vendor/permanentinc/type/dist/styles/main.css") %>
     <% require javascript("vendor/permanentinc/type/dist/scripts/type.js") %>

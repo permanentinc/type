@@ -4,9 +4,11 @@ namespace Permanentinc\Type\Extensions;
 
 
 use SilverStripe\Core\Extension;
+use SilverStripe\Model\ArrayData;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Model\List\ArrayList;
 use SilverStripe\SiteConfig\SiteConfig;
-use SilverStripe\View\ArrayData;
-use SilverStripe\ORM\ArrayList;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 
 /**
  * TypeExtension
@@ -76,5 +78,17 @@ class TypeExtension extends Extension
         }
         $css = preg_replace('/[\s\+]/', ' ', $css);
         return $css;
+    }
+
+    public function updateCMSFields($fields)
+    {
+        $fields->addFieldsToTab('Root.TypeSettings', [
+            HTMLEditorField::create('typeCSS', 'Custom CSS')
+                ->setDescription('Add custom CSS to be used throughout the site. This CSS will be minified automatically.'),
+            TextareaField::create('typeFonts', 'Google Fonts')
+                ->setDescription('Add Google Font names separated by commas. E.g., "Roboto, Open Sans"'),
+            TextareaField::create('typeJSON', 'Custom JSON')
+                ->setDescription('Add custom JSON data to be used throughout the site. This data will be minified automatically.'),
+        ]);
     }
 }
